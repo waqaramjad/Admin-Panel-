@@ -70,8 +70,12 @@ class CreatePOst extends Component {
     }
     
 
-    handleChangeUsername = event =>
+    handleChangeUsername = event =>{
     this.setState({ username: event.target.value });
+    console.log(this.state)
+    console.log(event)
+}
+    
   handleUploadStart = () => this.setState({ isUploading: true, progress: 0 });
   handleProgress = progress => this.setState({ progress });
   handleUploadError = error => {
@@ -79,6 +83,8 @@ class CreatePOst extends Component {
     console.error(error);
   };
   handleUploadSuccess = filename => {
+
+    console.log(this.state)
     this.setState({ avatar: filename, progress: 100, isUploading: false });
     firebase
       .storage()
@@ -140,15 +146,6 @@ pushData(){
             this._isMounted = true;
 // var a = 
             window.onpopstate = ()=> {
-            //   if(this._isMounted) {
-            //     const { hash } = location;
-            //     if(hash.indexOf('home')>-1 && this.state.value!==0)
-            //       this.setState({value: 0})
-            //     if(hash.indexOf('users')>-1 && this.state.value!==1)
-            //       this.setState({value: 1})
-            //     if(hash.indexOf('data')>-1 && this.state.value!==2)
-            //       this.setState({value: 2})
-            //   }
  history.push({
            
             UID : 'wiki test 1 ' , 
@@ -165,7 +162,7 @@ pushData(){
 
 
     render() {
-        console.log(this.state.currendata)
+        console.log(this.state)
         console.log(this.props)
 
         console.log(firebase)
@@ -194,7 +191,7 @@ pushData(){
 
 <div>
         <form>
-          <label>Username:</label>
+          {/* <label>Username:</label> */}
           <input
             type="text"
             value={this.state.username}
