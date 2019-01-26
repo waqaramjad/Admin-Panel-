@@ -5,8 +5,21 @@ import { connect } from 'react-redux';
 import history from '../../History';
 import Nav from '../navBar'
 import { postArticles } from '../../store/action/action'
-import { apps } from 'firebase';
+import firebase from 'firebase';
 import { browserHistory } from 'react-router';
+import FileUploader from "react-firebase-file-uploader";
+
+// var config = {
+//     apiKey: "AIzaSyDcyZcVQP8nuHcMJsKd5wHxoaerUW6apZQ",
+//     authDomain: "waqarchatapp.firebaseapp.com",
+//     databaseURL: "https://waqarchatapp.firebaseio.com",
+//     projectId: "waqarchatapp",
+//     storageBucket: "waqarchatapp.appspot.com",
+//     messagingSenderId: "676235345078"
+// };
+//  firebase.initializeApp(config);
+
+
 
 // componentDidMount() {
 //     super.componentDidMount();
@@ -39,7 +52,12 @@ class CreatePOst extends Component {
 
         this.state = {
             textArea : '' , 
-            title : ''
+            title : '' , 
+            username: "",
+    avatar: "",
+    isUploading: false,
+    progress: 0,
+    avatarURL: ""
 
         }
 
@@ -51,6 +69,25 @@ class CreatePOst extends Component {
    
     }
     
+
+    handleChangeUsername = event =>
+    this.setState({ username: event.target.value });
+  handleUploadStart = () => this.setState({ isUploading: true, progress: 0 });
+  handleProgress = progress => this.setState({ progress });
+  handleUploadError = error => {
+    this.setState({ isUploading: false });
+    console.error(error);
+  };
+  handleUploadSuccess = filename => {
+    this.setState({ avatar: filename, progress: 100, isUploading: false });
+    firebase
+      .storage()
+      .ref("images")
+      .child(filename)
+      .getDownloadURL()
+      .then(url => this.setState({ avatarURL: url }));
+  };
+ 
 
     handleChange(event){
 this.setState({
@@ -131,6 +168,7 @@ pushData(){
         console.log(this.state.currendata)
         console.log(this.props)
 
+        console.log(firebase)
         window.onbeforeunload = function () {
             console.log('back press')
          }
@@ -153,6 +191,32 @@ pushData(){
       <input  type="file" accept="image/*" />
 <br/>
 <button className="btn btn-primary btnHeight" type="button" onClick={this.pushData} >Post </button>
+
+<div>
+        <form>
+          <label>Username:</label>
+          <input
+            type="text"
+            value={this.state.username}
+            name="username"
+            onChange={this.handleChangeUsername}
+          />
+          <label>Avatar:</label>
+          {this.state.isUploading && <p>Progress: {this.state.progress}</p>}
+          {this.state.avatarURL && <img src={this.state.avatarURL} />}
+          <FileUploader
+            accept="image/*"
+            name="avatar"
+            randomizeFilename
+            storageRef={firebase.storage().ref("images")}
+            onUploadStart={this.handleUploadStart}
+            onUploadError={this.handleUploadError}
+            onUploadSuccess={this.handleUploadSuccess}
+            onProgress={this.handleProgress}
+          />
+        </form>
+      </div>
+
 </div>
                
             </div>)
