@@ -8,6 +8,7 @@ import { postArticles } from '../../store/action/action'
 import firebase from 'firebase';
 import { browserHistory } from 'react-router';
 import FileUploader from "react-firebase-file-uploader";
+import { Panel , PanelGroup ,ProgressBar,  Button} from 'react-bootstrap';
 
 // var config = {
 //     apiKey: "AIzaSyDcyZcVQP8nuHcMJsKd5wHxoaerUW6apZQ",
@@ -114,10 +115,15 @@ pushData(){
     console.log('this.state.value')
     var title = this.state.title
     var textArea = this.state.textArea
-
+    var avatar = this.state.avatar
+    var avatarURL = this.state.avatarURL
     var dataObject = {
         title , 
-        textArea
+        textArea ,
+        avatar , 
+        avatarURL
+
+        
     }
     this.props.postArticles(dataObject)
 
@@ -185,35 +191,40 @@ pushData(){
           />
 
      
-      <input  type="file" accept="image/*" />
+      {/* <input  type="file" accept="image/*" /> */}
 <br/>
-<button className="btn btn-primary btnHeight" type="button" onClick={this.pushData} >Post </button>
 
 <div>
         <form>
           {/* <label>Username:</label> */}
-          <input
+          {/* <input
             type="text"
             value={this.state.username}
             name="username"
             onChange={this.handleChangeUsername}
-          />
-          <label>Avatar:</label>
-          {this.state.isUploading && <p>Progress: {this.state.progress}</p>}
-          {this.state.avatarURL && <img src={this.state.avatarURL} />}
-          <FileUploader
-            accept="image/*"
-            name="avatar"
-            randomizeFilename
-            storageRef={firebase.storage().ref("images")}
-            onUploadStart={this.handleUploadStart}
-            onUploadError={this.handleUploadError}
-            onUploadSuccess={this.handleUploadSuccess}
-            onProgress={this.handleProgress}
-          />
+        /> */}
+          {/* <label>Avatar:</label> */}
+          {/* {this.state.isUploading && <p>Progress: {this.state.progress}</p>} */}
+          {this.state.isUploading && <ProgressBar striped bsStyle="info" now={40} />}
+          {/* {this.state.avatarURL && <img src={this.state.avatarURL} />} */}
+          <label style={{backgroundColor: 'steelblue', color: 'white', padding: 10, borderRadius: 4, pointer: 'cursor'}}>
+    Select your Image
+    <FileUploader
+      hidden
+      accept="image/*"
+      storageRef={firebase.storage().ref('images')}
+      onUploadStart={this.handleUploadStart}
+      onUploadError={this.handleUploadError}
+      onUploadSuccess={this.handleUploadSuccess}
+      onProgress={this.handleProgress}
+    />
+  </label> <br/>
+          <img style={{width:'4%'}} src={this.state.avatarURL} />
+          
         </form>
       </div>
-
+      <br/>
+<button className="btn btn-primary btnHeight" type="button" onClick={this.pushData} >Post </button>
 </div>
                
             </div>)
