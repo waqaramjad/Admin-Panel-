@@ -94,7 +94,9 @@ statusForLoading : true
     })
 }
     render() {
+
         var a = this.state.statusForLoading
+        console.log(this.props)
         console.log(this.state.statusForLoading)
         console.log(this.props.location.status)
         if(this.state.statusForLoading === false && this.props.location.status == true )

@@ -9,6 +9,9 @@ import firebase from 'firebase';
 import { browserHistory } from 'react-router';
 import FileUploader from "react-firebase-file-uploader";
 import { Panel , PanelGroup ,ProgressBar,  Button} from 'react-bootstrap';
+import ReactQuill from 'react-quill'; // ES6
+import PropTypes from 'prop-types'
+import '../Css/check.css'
 
 // var config = {
 //     apiKey: "AIzaSyDcyZcVQP8nuHcMJsKd5wHxoaerUW6apZQ",
@@ -58,7 +61,8 @@ class CreatePOst extends Component {
     avatar: "",
     isUploading: false,
     progress: 0,
-    avatarURL: ""
+    avatarURL: "" , 
+    editorHtml: '', theme: 'snow' 
 
         }
 
@@ -72,10 +76,22 @@ class CreatePOst extends Component {
     
 
     handleChangeUsername = event =>{
+
     this.setState({ username: event.target.value });
     console.log(this.state)
     console.log(event)
 }
+
+
+handleChange (html) {
+    console.log(html)
+      this.setState({ editorHtml: html });
+  }
+  
+  handleThemeChange (newTheme) {
+    if (newTheme === "core") newTheme = null;
+    this.setState({ theme: newTheme })
+  }
     
   handleUploadStart = () => this.setState({ isUploading: true, progress: 0 });
   handleProgress = progress => this.setState({ progress });
@@ -96,13 +112,13 @@ class CreatePOst extends Component {
   };
  
 
-    handleChange(event){
-this.setState({
-    textArea : event.target.value
-})
+//     handleChange(event){
+// this.setState({
+//     textArea : event.target.value
+// })
 
-console.log(this.state.textArea)
-}
+// console.log(this.state.textArea)
+// }
     handleChangetitle(event){
 this.setState({
     title : event.target.value
@@ -114,14 +130,16 @@ pushData(){
     
     console.log('this.state.value')
     var title = this.state.title
-    var textArea = this.state.textArea
+    var editorHtml = this.state.editorHtml
     var avatar = this.state.avatar
     var avatarURL = this.state.avatarURL
+    
     var dataObject = {
         title , 
-        textArea ,
+        
         avatar , 
-        avatarURL
+        avatarURL ,
+        editorHtml
 
         
     }
@@ -185,10 +203,34 @@ pushData(){
   <label for="usr">title:</label>
   <input type="text" className="form-control" id="usr" style={{width: '70%'}} onChange={this.handleChangetitle} />
 </div>
-                 <textarea name="body"
+                 {/* <textarea name="body"
           onChange={this.handleChange}
           style={{height: 250 , width : '70%'}}
-          />
+          /> */}
+
+<div style={{marginRight:'30%'}}>
+            <ReactQuill 
+              theme={this.state.theme}
+              onChange={this.handleChange}
+              value={this.state.editorHtml}
+              modules={CreatePOst.modules}
+              formats={CreatePOst.formats}
+            //   bounds={'.app'}
+              placeholder={'Write Something here '}
+              style={{qlEditor : {
+                minHeight: '18em'
+              }}}
+             />
+            {/* <div className="themeSwitcher">
+              <label>Theme </label>
+              <select onChange={(e) => 
+                  this.handleThemeChange(e.target.value)}>
+                <option value="snow">Snow</option>
+                <option value="bubble">Bubble</option>
+                <option value="core">Core</option>
+              </select>
+            </div> */}
+           </div>
 
      
       {/* <input  type="file" accept="image/*" /> */}
@@ -236,7 +278,38 @@ pushData(){
 
 }
 
-
+CreatePOst.modules = {
+    toolbar: [
+      [{ 'header': '1'}, {'header': '2'}, { 'font': [] }],
+      [{size: []}],
+      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+      [{'list': 'ordered'}, {'list': 'bullet'}, 
+       {'indent': '-1'}, {'indent': '+1'}],
+      ['link', 'image', 'video'],
+      ['clean']
+    ],
+    clipboard: {
+      // toggle to add extra line breaks when pasting HTML:
+      matchVisual: false,
+    }
+  }
+  /* 
+   * Quill editor formats
+   * See https://quilljs.com/docs/formats/
+   */
+  CreatePOst.formats = [
+    'header', 'font', 'size',
+    'bold', 'italic', 'underline', 'strike', 'blockquote',
+    'list', 'bullet', 'indent',
+    'link', 'image', 'video' , 'font-Size'
+  ]
+  
+  /* 
+   * PropType validation
+   */
+  CreatePOst.propTypes = {
+    placeholder: PropTypes.string,
+  }
 
 function mapStateToProp(state) {
     return ({
@@ -253,6 +326,8 @@ function mapDispatchToProp(dispatch) {
         }
     })
 }
+
+
 
 // export default Company;
 export default connect(mapStateToProp, mapDispatchToProp)(CreatePOst);

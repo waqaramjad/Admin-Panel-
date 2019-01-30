@@ -11,6 +11,8 @@ import Admin from './components/admin/admin'
 import Add from './components/company/postingAdd'
 import CreatePost from './components/admin/CreatePost'
 import EditPost from './components/admin/Edit'
+import Editor from './components/admin/checkingForEditor'
+ 
 import 'react-bootstrap';
 
 import history from './History';
@@ -32,6 +34,7 @@ class Routers extends Component {
                     <Route exact path="/JobsSt" component={JobsSt} />
                     <Route exact path="/CreatePost" component={CreatePost} />
                     <Route exact path="/Edit" component={EditPost} />
+                    <Route exact path="/MyComponent" component={Editor} />
                     
                     
                 </div>
