@@ -6,7 +6,7 @@ import history from '../../History';
 import Nav from '../navBar'
 
 import { getDataByAdmin , renderArticles , deleteArticle } from '../../store/action/action'
-import { Panel , PanelGroup , Button} from 'react-bootstrap';
+import { Panel , PanelGroup , Button , Image } from 'react-bootstrap';
 
 import { apps } from 'firebase';
 
@@ -153,7 +153,8 @@ statusForLoading : true
       </Panel.Title>
 
     </Panel.Heading>
-    <Panel.Body> {todos.textArea}</Panel.Body>
+    {/* <Panel.Body> {todos.textArea}</Panel.Body> */}
+    <Panel.Body> <Image src={todos.avatarURL} thumbnail style={{height: '200px' , width: null}} />;</Panel.Body>
 
   </Panel>
                   
