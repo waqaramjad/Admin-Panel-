@@ -84,6 +84,19 @@ var checker = this.state.statusForLoading
           })
       
     }
+      showPost(index , uid){
+         
+          var UID = uid
+
+          history.push({
+            pathname: '/showPost',
+            UID : uid , 
+            index : index , 
+            title : 'title' , 
+            ArticleData : 'ArticleData'
+          })
+      
+    }
     
 componentWillMount(){
         console.log(this.props.location.status)
@@ -139,10 +152,11 @@ statusForLoading : true
             {
               this.props.POSTS.map((todos, index) => {
                 return (
-
                     <Panel bsStyle="primary" key={index}>
     <Panel.Heading>
-      <Panel.Title componentClass="h3"> {todos.title}
+      <Panel.Title   componentClass="h3"> 
+
+      <Button bsStyle="primary" onClick={this.showPost.bind(this, index , todos)}>{todos.title}</Button>
       
       {/* <button type="button" style={{float:"right"}} onClick={this.CreatePost} >Delete </button> */}
       {/* <div> */}
@@ -158,7 +172,7 @@ statusForLoading : true
 
   </Panel>
                   
-                )
+  )
               })
             }
           </ol>
