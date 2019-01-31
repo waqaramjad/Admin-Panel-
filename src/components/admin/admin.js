@@ -71,8 +71,10 @@ var checker = this.state.statusForLoading
       }
 
 
-      editArticle(index , uid){
+      editArticle(index , uid , todo){
          
+        console.log(todo)
+        console.log(uid)
           var UID = uid
 
           history.push({
@@ -80,7 +82,8 @@ var checker = this.state.statusForLoading
             UID : uid , 
             index : index , 
             title : 'title' , 
-            ArticleData : 'ArticleData'
+            ArticleData : 'ArticleData' , 
+            todo : todo
           })
       
     }
@@ -156,13 +159,15 @@ statusForLoading : true
     <Panel.Heading>
       <Panel.Title   componentClass="h3"> 
 
-      <Button bsStyle="primary" onClick={this.showPost.bind(this, index , todos)}>{todos.title}</Button>
+      {/* <Button bsStyle="primary" onClick={this.showPost.bind(this, index , todos)}></Button> */}
       
+      {todos.title}
       {/* <button type="button" style={{float:"right"}} onClick={this.CreatePost} >Delete </button> */}
       {/* <div> */}
 
       {/* </div> */}
-      <Button bsStyle="success" bsSize="small" style={style.btnEdit} onClick={this.editArticle.bind(this, index , todos.id)}>Edit</Button>
+      <Button bsStyle="info" bsSize="small" style={style.btnEdit} onClick={this.showPost.bind(this, index , todos)}>View</Button>
+      <Button bsStyle="success" bsSize="small" style={style.btnEdit} onClick={this.editArticle.bind(this, index , todos.id , todos)}>Edit</Button>
       <Button bsStyle="danger" bsSize="small" style={style.btnDel} onClick={this.deleteArticle.bind(this, index , )}>Delete</Button>
       </Panel.Title>
 

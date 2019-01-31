@@ -136,7 +136,7 @@ export function editTodo(todoObj, index) {
         // console.log(todoObj)
         let updateKey =todoObj.id;
         delete todoObj.id;
-        firebase.database().ref('articles/' + index).set(todoObj)
+        firebase.database().ref('articles/' + index).update(todoObj)
             // .then((v) => {
             //     currentTodos = currentTodos.slice(0, index).concat(currentTodos.slice(index + 1));
             //     dispatch({ type: ActionTypes.RENDERTODOS, payload: currentTodos })

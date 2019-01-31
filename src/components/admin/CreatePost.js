@@ -1,5 +1,6 @@
 import Parser from 'html-react-parser';
 import React, { Component } from 'react';
+// import { ImageResize } from 'quill-image-resize-module';
 import { connect } from 'react-redux';
 // import { signinAction } from '../store/action/action';
 // import './Css/signup.css'
@@ -8,13 +9,18 @@ import Nav from '../navBar'
 import { postArticles } from '../../store/action/action'
 import firebase from 'firebase';
 import { browserHistory } from 'react-router';
+// import Quill from 'quill';
 import FileUploader from "react-firebase-file-uploader";
 import { Panel , PanelGroup ,ProgressBar,  Button} from 'react-bootstrap';
 import ReactQuill from 'react-quill'; // ES6
-import PropTypes from 'prop-types'
 import '../Css/check.css'
+import PropTypes from 'prop-types'
+// import { Resize, BaseModule } from 'quill-image-resize-module';
 var ReactDOMServer = require('react-dom/server');
 var HtmlToReactParser = require('html-to-react').Parser;
+
+// var ImageResize = require('quill-image-resize-module')
+// Quill.register('modules/imageResize', ImageResize);
 // import { render } from 'react-dom';
 // var config = {
 //     apiKey: "AIzaSyDcyZcVQP8nuHcMJsKd5wHxoaerUW6apZQ",
@@ -219,8 +225,8 @@ var reactHtml = ReactDOMServer.renderToStaticMarkup(reactElement);
         return (
             <div>
                  <Nav />
-                 <div>{Parser(this.state.editorHtml)}</div>
-{this.state.editorHtml}
+                 {/* <div>{Parser(this.state.editorHtml)}</div> */}
+
 <div style={style.mainDiv}>
                  <div class="form-group">
   <label for="usr">title:</label>
@@ -315,7 +321,8 @@ CreatePOst.modules = {
     clipboard: {
       // toggle to add extra line breaks when pasting HTML:
       matchVisual: false,
-    }
+    } , 
+    
   }
   /* 
    * Quill editor formats

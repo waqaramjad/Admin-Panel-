@@ -6,6 +6,17 @@ import history from '../../History';
 import Nav from '../navBar'
 import { editTodo } from '../../store/action/action'
 import { apps } from 'firebase';
+import { browserHistory } from 'react-router';
+import Quill from 'quill';
+import FileUploader from "react-firebase-file-uploader";
+import { Panel , PanelGroup ,ProgressBar,  Button} from 'react-bootstrap';
+import ReactQuill from 'react-quill'; // ES6
+import '../Css/check.css'
+import PropTypes from 'prop-types'
+// import { Resize, BaseModule } from 'quill-image-resize-module';
+var ReactDOMServer = require('react-dom/server');
+var HtmlToReactParser = require('html-to-react').Parser;
+
 
 var style = {
     mainDiv : {
@@ -28,12 +39,18 @@ class EditPost extends Component {
 
         this.state = {
             textArea : '' , 
-            title : ''
+            title : '' , 
+            username: "",
+            avatar: "",
+            isUploading: false,
+            progress: 0,
+            avatarURL: "" , 
+            editorHtml : '',  theme: 'snow' , check:''
 
         }
 
 
-        this.handleChange = this.handleChange.bind(this)
+        // this.handleChange = this.handleChange.bind(this)
         this.handleChangetitle = this.handleChangetitle.bind(this)
         this.pushData = this.pushData.bind(this)
 
@@ -41,13 +58,13 @@ class EditPost extends Component {
     }
     
 
-    handleChange(event){
-this.setState({
-    textArea : event.target.value
-})
+//     handleChange(event){
+// this.setState({
+//     textArea : event.target.value
+// })
 
-console.log(this.state.textArea)
-}
+// console.log(this.state.textArea)
+// }
     handleChangetitle(event){
 this.setState({
     title : event.target.value
@@ -59,11 +76,11 @@ pushData(){
     
     console.log('this.state.value')
     var title = this.state.title
-    var textArea = this.state.textArea
+    var editorHtml = this.state.editorHtml
 
     var dataObject = {
         title , 
-        textArea
+        editorHtml
     }
     var UID = this.props.location.UID
     this.props.editTodo(dataObject , UID)
@@ -97,8 +114,15 @@ pushData(){
           }
 
     render() {
+
         console.log(this.state.currendata)
-        console.log(this.props.location.UID)
+        console.log(this.props.location.todo)
+        var todo = this.props.location.todo.editorHtml
+        if(this.state.editorHtml==='')
+        this.setState({
+            editorHtml : todo
+        })
+        
 var myTitle = this.props.location.title 
 var postData = this.props.location.ArticleData 
 
@@ -122,14 +146,38 @@ this.setState({
   <input type="text" className="form-control" id="usr" style={{width: '70%'}} onChange={this.handleChangetitle} />
 </div>
 
-<label for="usr" style={style.Label}>Article:</label><br/>
+<div style={{marginRight:'30%'}}>
+            <ReactQuill 
+              theme={this.state.theme}
+              onChange={this.handleChange}
+              value={this.state.editorHtml}
+              modules={EditPost  .modules}
+              formats={EditPost  .formats}
+            //   bounds={'.app'}
+              placeholder={'Write Something here '}
+              style={{qlEditor : {
+                minHeight: '18em'
+              }}}
+             />
+            {/* <div className="themeSwitcher">
+              <label>Theme </label>
+              <select onChange={(e) => 
+                  this.handleThemeChange(e.target.value)}>
+                <option value="snow">Snow</option>
+                <option value="bubble">Bubble</option>
+                <option value="core">Core</option>
+              </select>
+            </div> */}
+           </div>
+
+{/* <label for="usr" style={style.Label}>Article:</label><br/>
                  <textarea name="body"
           onChange={this.handleChange}
           style={{height: 250 , width : '70%'}}
-          />
+          /> */}
 
      
-      <input  type="file" accept="image/*" />
+      {/* <input  type="file" accept="image/*" /> */}
       {/* <input type="file" className="btn btn-primary btn-choose" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"></input> */}
 <br/>
 <button className="btn btn-primary btnHeight" type="button" onClick={this.pushData} >Update </button>
@@ -143,6 +191,40 @@ this.setState({
 
 
 }
+
+EditPost  .modules = {
+    toolbar: [
+      [{ 'header': '1'}, {'header': '2'}, { 'font': [] }],
+      [{size: []}],
+      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+      [{'list': 'ordered'}, {'list': 'bullet'}, 
+       {'indent': '-1'}, {'indent': '+1'}],
+      ['link', 'image', 'video'],
+      ['clean']
+    ],
+    clipboard: {
+      // toggle to add extra line breaks when pasting HTML:
+      matchVisual: false,
+    } , 
+   
+  }
+  /* 
+   * Quill editor formats
+   * See https://quilljs.com/docs/formats/
+   */
+  EditPost  .formats = [
+    'header', 'font', 'size',
+    'bold', 'italic', 'underline', 'strike', 'blockquote',
+    'list', 'bullet', 'indent',
+    'link', 'image', 'video' , 'font-Size'
+  ]
+  
+  /* 
+   * PropType validation
+   */
+  EditPost  .propTypes = {
+    placeholder: PropTypes.string,
+  }
 
 
 
