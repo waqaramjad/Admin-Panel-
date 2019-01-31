@@ -115,22 +115,28 @@ pushData(){
 
     render() {
 
-        console.log(this.state.currendata)
-        console.log(this.props.location.todo)
+        // console.log(this.state.currendata)
+        // console.log(this.props.location.todo)
         var todo = this.props.location.todo.editorHtml
+        var title = this.props.location.todo.title
+        console.log(title)
         if(this.state.editorHtml==='')
-        this.setState({
-            editorHtml : todo
-        })
-        
-var myTitle = this.props.location.title 
-var postData = this.props.location.ArticleData 
+        {
 
-if(this.state.textArea==''&& this.state.title=='')
-this.setState({
-    title : myTitle , 
-    textArea : postData
-})
+            this.setState({
+                editorHtml : todo  , 
+                title : title 
+            })
+        }
+        
+// var myTitle = this.props.location.title 
+// var postData = this.props.location.ArticleData 
+
+// if(this.state.textArea==''&& this.state.title=='')
+// this.setState({
+//     title : myTitle , 
+//     editorHtml : postData
+// })
 
         
 
@@ -142,8 +148,8 @@ this.setState({
 
 
                  <div class="form-group">
-  <label for="usr" style={style.Label}>title:</label>
-  <input type="text" className="form-control" id="usr" style={{width: '70%'}} onChange={this.handleChangetitle} />
+                 <label for="usr" style={{fontSize:18}}>title:</label>
+  <input type="text" className="form-control" id="usr" style={{width: '70%'}} value={this.state.title} onChange={this.handleChangetitle} />
 </div>
 
 <div style={{marginRight:'30%'}}>
@@ -154,8 +160,8 @@ this.setState({
               modules={EditPost  .modules}
               formats={EditPost  .formats}
             //   bounds={'.app'}
-              placeholder={'Write Something here '}
-              style={{qlEditor : {
+            placeholder={'Write Article here '}
+            style={{qlEditor : {
                 minHeight: '18em'
               }}}
              />

@@ -9,6 +9,8 @@ import history from '../../History';
 import Nav from '../navBar'
 import { editTodo } from '../../store/action/action'
 import { apps } from 'firebase';
+import { Panel , PanelGroup , Button , Image } from 'react-bootstrap';
+
 var ReactDOMServer = require('react-dom/server');
 var HtmlToReactParser = require('html-to-react').Parser;
 
@@ -130,13 +132,28 @@ this.setState({
             <div style={style.mainDiv}>
 
                 {/* {a} */}
-                 
+                <Panel bsStyle="primary" >
+    <Panel.Heading>
+      <Panel.Title   componentClass="h3"> 
+
+      {/* <Button bsStyle="primary" onClick={this.showPost.bind(this, index , todos)}></Button> */}
+      
+     Title :  {myTitle}
+      </Panel.Title>
+
+    </Panel.Heading>
+    {/* <Panel.Body> {todos.textArea}</Panel.Body> */}
+    <Panel.Body> 
+    {Parser(editorHtml)}
+    </Panel.Body>
+
+  </Panel>
 
                  {/* <div style={style.mainDiv}> */}
 
-                 <label for="usr" style={style.Label}>Title :  {myTitle} </label><br/>
+                 {/* <label for="usr" style={style.Label}>Title :  {myTitle} </label><br/> */}
                  
-{Parser(editorHtml)}
+
 
 
 {/* </div> */}

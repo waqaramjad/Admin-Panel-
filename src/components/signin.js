@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { signinAction } from '../store/action/action';
 import './Css/signup.css'
 import history from '../History';
-import Nav from './navBar'
+import NavSign from './navBarForSignIn'
 
 
 class Signin extends Component {
@@ -64,7 +64,7 @@ class Signin extends Component {
     render() {
         return (
             <div>
-<Nav/>
+<NavSign/>
                 <div className="container">
 
                     <div className="row main">

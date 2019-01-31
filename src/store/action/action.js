@@ -137,7 +137,9 @@ export function editTodo(todoObj, index) {
         let updateKey =todoObj.id;
         delete todoObj.id;
         firebase.database().ref('articles/' + index).update(todoObj)
+        alert('Data Updated')
             // .then((v) => {
+
             //     currentTodos = currentTodos.slice(0, index).concat(currentTodos.slice(index + 1));
             //     dispatch({ type: ActionTypes.RENDERTODOS, payload: currentTodos })
             // });
@@ -174,7 +176,7 @@ export function postArticles(data) {
         firebase.database().ref('/articles' ).push(data)
             .then((data) => {
 
-
+                alert('Article Added')
             })
         // firebase.database().ref('users/profiles/' + user.userUid).update(user)
         //     .then((data) => {

@@ -28,6 +28,7 @@ class Routers extends Component {
                     <Route exact path="/home" component={Home} />
                     <Route exact path="/signup" component={Signup} />
                     <Route exact path="/" component={Signin} />
+                    <Route exact path="/SignIn" component={Signin} />
                     <Route exact path="/student" component={student} />
                     <Route exact path="/company" component={Company} />
                     <Route exact path="/Admin" component={Admin} />

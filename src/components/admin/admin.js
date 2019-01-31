@@ -73,16 +73,20 @@ var checker = this.state.statusForLoading
 
       editArticle(index , uid , todo){
          
-        console.log(todo)
+        console.log(todo.title)
         console.log(uid)
           var UID = uid
+          var title = todo.title
+          var editorHtml = todo.editorHtml
+          console.log(title)
+          console.log(editorHtml)
 
           history.push({
             pathname: '/Edit',
             UID : uid , 
             index : index , 
-            title : 'title' , 
-            ArticleData : 'ArticleData' , 
+            title : title , 
+            ArticleData : editorHtml , 
             todo : todo
           })
       
@@ -99,6 +103,9 @@ var checker = this.state.statusForLoading
             ArticleData : 'ArticleData'
           })
       
+    }
+    check1(){
+        
     }
     
 componentWillMount(){
@@ -166,9 +173,10 @@ statusForLoading : true
       {/* <div> */}
 
       {/* </div> */}
-      <Button bsStyle="info" bsSize="small" style={style.btnEdit} onClick={this.showPost.bind(this, index , todos)}>View</Button>
-      <Button bsStyle="success" bsSize="small" style={style.btnEdit} onClick={this.editArticle.bind(this, index , todos.id , todos)}>Edit</Button>
+      {/* <Button bsStyle="info" bsSize="small" style={style.btnEdit} onClick={this.check1.bind(this)}>check1</Button> */}
       <Button bsStyle="danger" bsSize="small" style={style.btnDel} onClick={this.deleteArticle.bind(this, index , )}>Delete</Button>
+      <Button bsStyle="success" bsSize="small" style={style.btnEdit} onClick={this.editArticle.bind(this, index , todos.id , todos)}>Edit</Button>
+      <Button bsStyle="info" bsSize="small" style={style.btnEdit} onClick={this.showPost.bind(this, index , todos)}>View</Button>
       </Panel.Title>
 
     </Panel.Heading>

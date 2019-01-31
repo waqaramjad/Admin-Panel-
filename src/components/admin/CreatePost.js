@@ -11,7 +11,7 @@ import firebase from 'firebase';
 import { browserHistory } from 'react-router';
 // import Quill from 'quill';
 import FileUploader from "react-firebase-file-uploader";
-import { Panel , PanelGroup ,ProgressBar,  Button} from 'react-bootstrap';
+import { Panel , PanelGroup ,ProgressBar,  Button , Modal} from 'react-bootstrap';
 import ReactQuill from 'react-quill'; // ES6
 import '../Css/check.css'
 import PropTypes from 'prop-types'
@@ -153,9 +153,15 @@ pushData(){
         
     }
     this.props.postArticles(dataObject)
-
+this.setState({
+  title : '', 
+        
+        avatar :'', 
+        avatarURL :'',
+        editorHtml:''
+})
     console.log(dataObject)
-        }
+       }
 
         // componentDidMount() {
         //     super.componentDidMount();
@@ -229,8 +235,8 @@ var reactHtml = ReactDOMServer.renderToStaticMarkup(reactElement);
 
 <div style={style.mainDiv}>
                  <div class="form-group">
-  <label for="usr">title:</label>
-  <input type="text" className="form-control" id="usr" style={{width: '70%'}} onChange={this.handleChangetitle} />
+  <label for="usr" style={{fontSize:18}}>title:</label>
+  <input type="text" className="form-control" id="usr" style={{width: '70%'}} value={this.state.title} onChange={this.handleChangetitle} />
 
 </div>
                  {/* <textarea name="body"
@@ -246,7 +252,7 @@ var reactHtml = ReactDOMServer.renderToStaticMarkup(reactElement);
               modules={CreatePOst.modules}
               formats={CreatePOst.formats}
             //   bounds={'.app'}
-              placeholder={'Write Something here '}
+              placeholder={'Write Article here '}
               style={{qlEditor : {
                 minHeight: '18em'
               }}}
