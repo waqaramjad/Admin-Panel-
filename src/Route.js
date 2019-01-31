@@ -11,7 +11,7 @@ import Admin from './components/admin/admin'
 import Add from './components/company/postingAdd'
 import CreatePost from './components/admin/CreatePost'
 import EditPost from './components/admin/Edit'
-import Editor from './components/admin/checkingForEditor'
+import Editor1 from './components/admin/checkingForEditor'
 import showPost from './components/admin/showPost'
  
 import 'react-bootstrap';
@@ -35,7 +35,7 @@ class Routers extends Component {
                     <Route exact path="/JobsSt" component={JobsSt} />
                     <Route exact path="/CreatePost" component={CreatePost} />
                     <Route exact path="/Edit" component={EditPost} />
-                    <Route exact path="/MyComponent" component={Editor} />
+                    <Route exact path="/edit1" component={Editor1} />
                     <Route exact path="/showPost" component={showPost} />
                     
                     

@@ -1,3 +1,4 @@
+import Parser from 'html-react-parser';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import { signinAction } from '../store/action/action';
@@ -12,7 +13,9 @@ import { Panel , PanelGroup ,ProgressBar,  Button} from 'react-bootstrap';
 import ReactQuill from 'react-quill'; // ES6
 import PropTypes from 'prop-types'
 import '../Css/check.css'
-
+var ReactDOMServer = require('react-dom/server');
+var HtmlToReactParser = require('html-to-react').Parser;
+// import { render } from 'react-dom';
 // var config = {
 //     apiKey: "AIzaSyDcyZcVQP8nuHcMJsKd5wHxoaerUW6apZQ",
 //     authDomain: "waqarchatapp.firebaseapp.com",
@@ -62,7 +65,7 @@ class CreatePOst extends Component {
     isUploading: false,
     progress: 0,
     avatarURL: "" , 
-    editorHtml: '', theme: 'snow' 
+    editorHtml : '',  theme: 'snow' , check:''
 
         }
 
@@ -167,7 +170,11 @@ pushData(){
         // }
 
         componentDidMount() {
+          var check =  <h1 >title:</h1>
             this._isMounted = true;
+            this.setState({
+              check : check
+            })
 // var a = 
             window.onpopstate = ()=> {
  history.push({
@@ -187,21 +194,38 @@ pushData(){
 
     render() {
         console.log(this.state)
-        console.log(this.props)
-
-        console.log(firebase)
+        var htmlInput = '<div><h1>Title</h1><p>A paragraph</p></div>';
+var htmlToReactParser = new HtmlToReactParser();
+var reactElement = htmlToReactParser.parse(htmlInput);
+var reactHtml = ReactDOMServer.renderToStaticMarkup(reactElement);
+ console.log(reactHtml)
+// assert.equal(reactHtml, htmlInput); // true
+// console.log(assert.equal(reactHtml, htmlInput))
+        // console.log( quill.getHTML())
+        // console.log(this.props)
+        // ReactQuill.getHTML()
+        // console.log(firebase)
         window.onbeforeunload = function () {
             console.log('back press')
-         }
+
+          }
+          // const editor = CreatePOst.propTypes.getEditor()
+          // console.log(editor)
+          // const unprivilegedEditor = this.reactQuillRef.makeUnprivilegedEditor(editor);
+          // You may now use the unprivilegedEditor proxy methods
+          // unprivilegedEditor.getText();
+          console.log(PropTypes)
 
         return (
             <div>
                  <Nav />
-
+                 <div>{Parser(this.state.editorHtml)}</div>
+{this.state.editorHtml}
 <div style={style.mainDiv}>
                  <div class="form-group">
   <label for="usr">title:</label>
   <input type="text" className="form-control" id="usr" style={{width: '70%'}} onChange={this.handleChangetitle} />
+
 </div>
                  {/* <textarea name="body"
           onChange={this.handleChange}
