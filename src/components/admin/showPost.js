@@ -1,4 +1,7 @@
+import Parser from 'html-react-parser';
+
 import React, { Component } from 'react';
+
 import { connect } from 'react-redux';
 // import { signinAction } from '../store/action/action';
 // import './Css/signup.css'
@@ -6,17 +9,20 @@ import history from '../../History';
 import Nav from '../navBar'
 import { editTodo } from '../../store/action/action'
 import { apps } from 'firebase';
+var ReactDOMServer = require('react-dom/server');
+var HtmlToReactParser = require('html-to-react').Parser;
 
 var style = {
     mainDiv : {
-        marginLeft : '2%' , 
+        marginLeft : '10%' , 
+        marginRight : '10%'
 
     } , 
 
     Label  : {
         marginTop : '1%' , 
         marginBottom : '1%' , 
-        fontSize : '14px'
+        fontSize : '25px'
         
     }
 }
@@ -114,24 +120,30 @@ this.setState({
 })
 
 
-var a =  <label >sgdddddddddhj</label>
-        console.log(a)
+
+        // console.log(a)
 
         return (
                  
-            <div>
-                {a}
+            <div >
+                <Nav />
+            <div style={style.mainDiv}>
+
+                {/* {a} */}
                  
 
                  {/* <div style={style.mainDiv}> */}
 
-                 <label for="usr" style={style.Label}>{myTitle}</label><br/>
+                 <label for="usr" style={style.Label}>Title :  {myTitle} </label><br/>
                  
+{Parser(editorHtml)}
 
 
 {/* </div> */}
                
-            </div>)
+            </div>
+            </div>
+            )
     }
 
 
