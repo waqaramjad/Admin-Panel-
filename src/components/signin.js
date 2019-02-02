@@ -93,13 +93,7 @@ class Signin extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                {/* <select  style={{color:'black'}} onChange={this.dropDownSelector}>
-                                    <option style={{color:'black'}}  value="student">student</option>
-                                    <option style={{color:'black'}}  value="company">company</option>
-                                    <option style={{color:'black'}}  value="company">Admin</option>
-
-                                        
-                                    </select> */}
+                               
 
 
                                 <div className="form-group ">

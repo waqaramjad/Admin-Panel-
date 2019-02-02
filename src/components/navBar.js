@@ -24,21 +24,14 @@ class Nav extends Component {
             <ul className="nav navbar-nav">
               <li className="active"><a href="/Admin">Home</a></li>
               <li className="active"><a href="/CreatePost">Create Post</a></li>
-              {/* <li><a href="#">Page 1</a></li> */}
-      {/* <li><a href="#">Page 2</a></li>
-      <li><a href="#">Page 3</a></li>  */}
              
 
             </ul>
             <ul className="nav navbar-nav" style={{float:'right'}}>
               <li className="active"><a href="/SignIn">Sign Out </a></li>
-              {/* <li><a href="#">Page 1</a></li> */}
-      {/* <li><a href="#">Page 2</a></li>
-      <li><a href="#">Page 3</a></li>  */}
              
 
             </ul>
-      {/* <li className="active" style={{float:'right'}}><a href="#">Home</a></li> */}
           </div>
         </nav>
       </div>)

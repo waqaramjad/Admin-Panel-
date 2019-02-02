@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { signinAction } from '../store/action/action';
-// import './Css/signup.css'
 import history from '../../History';
 import Nav from '../navBar'
 import { editTodo } from '../../store/action/action'
@@ -58,13 +56,6 @@ class EditPost extends Component {
     }
     
 
-//     handleChange(event){
-// this.setState({
-//     textArea : event.target.value
-// })
-
-// console.log(this.state.textArea)
-// }
     handleChangetitle(event){
 this.setState({
     title : event.target.value
@@ -93,15 +84,6 @@ pushData(){
             this._isMounted = true;
 // var a = 
             window.onpopstate = ()=> {
-            //   if(this._isMounted) {
-            //     const { hash } = location;
-            //     if(hash.indexOf('home')>-1 && this.state.value!==0)
-            //       this.setState({value: 0})
-            //     if(hash.indexOf('users')>-1 && this.state.value!==1)
-            //       this.setState({value: 1})
-            //     if(hash.indexOf('data')>-1 && this.state.value!==2)
-            //       this.setState({value: 2})
-            //   }
  history.push({
            
             UID : 'wiki test 1 ' , 
@@ -129,14 +111,7 @@ pushData(){
             })
         }
         
-// var myTitle = this.props.location.title 
-// var postData = this.props.location.ArticleData 
 
-// if(this.state.textArea==''&& this.state.title=='')
-// this.setState({
-//     title : myTitle , 
-//     editorHtml : postData
-// })
 
         
 
@@ -165,26 +140,11 @@ pushData(){
                 minHeight: '18em'
               }}}
              />
-            {/* <div className="themeSwitcher">
-              <label>Theme </label>
-              <select onChange={(e) => 
-                  this.handleThemeChange(e.target.value)}>
-                <option value="snow">Snow</option>
-                <option value="bubble">Bubble</option>
-                <option value="core">Core</option>
-              </select>
-            </div> */}
+           
            </div>
 
-{/* <label for="usr" style={style.Label}>Article:</label><br/>
-                 <textarea name="body"
-          onChange={this.handleChange}
-          style={{height: 250 , width : '70%'}}
-          /> */}
 
      
-      {/* <input  type="file" accept="image/*" /> */}
-      {/* <input type="file" className="btn btn-primary btn-choose" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"></input> */}
 <br/>
 <button className="btn btn-primary btnHeight" type="button" onClick={this.pushData} >Update </button>
 </div>

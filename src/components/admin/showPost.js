@@ -87,15 +87,6 @@ pushData(){
             this._isMounted = true;
 // var a = 
             window.onpopstate = ()=> {
-            //   if(this._isMounted) {
-            //     const { hash } = location;
-            //     if(hash.indexOf('home')>-1 && this.state.value!==0)
-            //       this.setState({value: 0})
-            //     if(hash.indexOf('users')>-1 && this.state.value!==1)
-            //       this.setState({value: 1})
-            //     if(hash.indexOf('data')>-1 && this.state.value!==2)
-            //       this.setState({value: 2})
-            //   }
  history.push({
            
             UID : 'wiki test 1 ' , 
@@ -149,9 +140,6 @@ this.setState({
 
   </Panel>
 
-                 {/* <div style={style.mainDiv}> */}
-
-                 {/* <label for="usr" style={style.Label}>Title :  {myTitle} </label><br/> */}
                  
 
 

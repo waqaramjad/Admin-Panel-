@@ -11,36 +11,15 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
 
-        case ActionTypes.USERNAME:
-            return ({
-                ...state,
-                userName: action.payload
-            })
+      
         case ActionTypes.CURRENTUSERDATA:
         console.log(action.payload)
             return ({
                 ...state,
                 currentUserData: action.payload
             })
-        case ActionTypes.GETSTUDENTBYCOMPANY:
-        console.log(action.payload)
-            return ({
-                ...state,
-                getStudentDataByCompany: action.payload
-            })
-        case ActionTypes.SENDADDSDATA:
-        console.log(action.payload)
-            return ({
-                ...state,
-                sendAddsData: action.payload
-            })
-        case ActionTypes.getAddsByCompany:
-        // case 'getAddsDataBySt':
-        console.log(action.payload)
-            return ({
-                ...state,
-                getAddsDataBySt: action.payload
-            })
+       
+     
         case ActionTypes.getDataByAdmin:
         // case 'getAddsDataBySt':
         console.log(action.payload)

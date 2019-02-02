@@ -19,38 +19,6 @@ import PropTypes from 'prop-types'
 var ReactDOMServer = require('react-dom/server');
 var HtmlToReactParser = require('html-to-react').Parser;
 
-// var ImageResize = require('quill-image-resize-module')
-// Quill.register('modules/imageResize', ImageResize);
-// import { render } from 'react-dom';
-// var config = {
-//     apiKey: "AIzaSyDcyZcVQP8nuHcMJsKd5wHxoaerUW6apZQ",
-//     authDomain: "waqarchatapp.firebaseapp.com",
-//     databaseURL: "https://waqarchatapp.firebaseio.com",
-//     projectId: "waqarchatapp",
-//     storageBucket: "waqarchatapp.appspot.com",
-//     messagingSenderId: "676235345078"
-// };
-//  firebase.initializeApp(config);
-
-
-
-// componentDidMount() {
-//     super.componentDidMount();
-
-//     this.onScrollNearBottom(this.scrollToLoad);
-
-//     this.backListener = browserHistory.listen(location => {
-//       if (location.action === "POP") {
-//         // Do your stuff
-//       }
-//     });
-//   }
-
-// componentWillUnmount() {
-//     super.componentWillUnmount();
-//     // Unbind listener
-//     this.backListener();
-// }
 
 
 var style = {
@@ -163,24 +131,6 @@ this.setState({
     console.log(dataObject)
        }
 
-        // componentDidMount() {
-        //     super.componentDidMount();
-        
-        //     this.onScrollNearBottom(this.scrollToLoad);
-        
-        //     this.backListener = browserHistory.listen(location => {
-        //       if (location.action === "POP") {
-        //        console.log('pop')
-        //       }
-        //     });
-        //   }
-
-        //   componentWillUnmount() {
-        //     super.componentWillUnmount();
-        //     // Unbind listener
-        //     this.backListener();
-        // }
-
         componentDidMount() {
           var check =  <h1 >title:</h1>
             this._isMounted = true;
@@ -211,27 +161,15 @@ var htmlToReactParser = new HtmlToReactParser();
 var reactElement = htmlToReactParser.parse(htmlInput);
 var reactHtml = ReactDOMServer.renderToStaticMarkup(reactElement);
  console.log(reactHtml)
-// assert.equal(reactHtml, htmlInput); // true
-// console.log(assert.equal(reactHtml, htmlInput))
-        // console.log( quill.getHTML())
-        // console.log(this.props)
-        // ReactQuill.getHTML()
-        // console.log(firebase)
         window.onbeforeunload = function () {
             console.log('back press')
 
           }
-          // const editor = CreatePOst.propTypes.getEditor()
-          // console.log(editor)
-          // const unprivilegedEditor = this.reactQuillRef.makeUnprivilegedEditor(editor);
-          // You may now use the unprivilegedEditor proxy methods
-          // unprivilegedEditor.getText();
           console.log(PropTypes)
 
         return (
             <div>
                  <Nav />
-                 {/* <div>{Parser(this.state.editorHtml)}</div> */}
 
 <div style={style.mainDiv}>
                  <div class="form-group">
@@ -257,34 +195,14 @@ var reactHtml = ReactDOMServer.renderToStaticMarkup(reactElement);
                 minHeight: '18em'
               }}}
              />
-            {/* <div className="themeSwitcher">
-              <label>Theme </label>
-              <select onChange={(e) => 
-                  this.handleThemeChange(e.target.value)}>
-                <option value="snow">Snow</option>
-                <option value="bubble">Bubble</option>
-                <option value="core">Core</option>
-              </select>
-            </div> */}
            </div>
 
      
-      {/* <input  type="file" accept="image/*" /> */}
 <br/>
 
 <div>
         <form>
-          {/* <label>Username:</label> */}
-          {/* <input
-            type="text"
-            value={this.state.username}
-            name="username"
-            onChange={this.handleChangeUsername}
-        /> */}
-          {/* <label>Avatar:</label> */}
-          {/* {this.state.isUploading && <p>Progress: {this.state.progress}</p>} */}
           {this.state.isUploading && <ProgressBar striped bsStyle="info" now={40} />}
-          {/* {this.state.avatarURL && <img src={this.state.avatarURL} />} */}
           <label style={{backgroundColor: 'steelblue', color: 'white', padding: 10, borderRadius: 4, pointer: 'cursor'}}>
     Select your Image
     <FileUploader
