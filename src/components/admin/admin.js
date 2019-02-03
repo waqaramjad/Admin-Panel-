@@ -75,7 +75,12 @@ class Admin extends Component {
             currendata: {},
             POSTS: [],
             statusForLoading: false , 
-            Sports : undefined
+            Sports : undefined , 
+            Seminary  : undefined , 
+            ChurchPlanning  : undefined , 
+            Medical : undefined , 
+            CommunityDevelopment : undefined , 
+            KingdomBusiness  : undefined , 
 
         }
 
@@ -124,7 +129,74 @@ Sports: Sports
                 Sports: undefined
                             })
         }
-console.log('data', data)
+
+        //*****************************************    */
+        if(data.POSTS['Seminary']!=undefined){
+            var Seminary = data.POSTS['Seminary']
+            this.setState({
+                Seminary: Seminary
+            })
+        }
+        else {
+            this.setState({
+                Seminary: undefined
+                            })
+        }
+
+        //*****************************************    */
+        if(data.POSTS['ChurchPlanning']!=undefined){
+            var ChurchPlanning = data.POSTS['ChurchPlanning']
+            this.setState({
+                ChurchPlanning: ChurchPlanning
+            })
+        }
+        else {
+            this.setState({
+                ChurchPlanning: undefined
+                            })
+        }
+
+        //*****************************************  Medical  */
+        if(data.POSTS['Medical']!=undefined){
+            var Medical = data.POSTS['Medical']
+            this.setState({
+                Medical: Medical
+            })
+        }
+        else {
+            this.setState({
+                Medical: undefined
+                            })
+        }
+
+        //*****************************************  CommunityDevelopment  */
+        if(data.POSTS['CommunityDevelopment']!=undefined){
+            var CommunityDevelopment = data.POSTS['CommunityDevelopment']
+            this.setState({
+                CommunityDevelopment: CommunityDevelopment
+            })
+        }
+        else {
+            this.setState({
+                CommunityDevelopment: undefined
+                            })
+        }
+
+        //***************************************** KingdomBusiness   */
+        if(data.POSTS['KingdomBusiness']!=undefined){
+            var KingdomBusiness = data.POSTS['KingdomBusiness']
+            this.setState({
+                KingdomBusiness: KingdomBusiness
+            })
+        }
+        else {
+            this.setState({
+                KingdomBusiness: undefined
+                            })
+        }
+
+        //*****************************************    */
+        console.log('data', data)
     }
 
     editArticle(uid, data) {
@@ -253,10 +325,7 @@ console.log(Sp)
             <ColoredLine color="black" />
             <ol className = "list-group" > {
                   
-                       
-                // Object.keys(Sports).map((todos, index) => {
-                //     console.log(todos)
-                //  })
+              
 
                     
                     this.state.Sports!=undefined ?   Object.keys(this.state.Sports).map((data, index) => {

@@ -67,7 +67,8 @@ class CreatePOst extends Component {
     isUploading: false,
     progress: 0,
     avatarURL: "" , 
-    editorHtml : '',  theme: 'snow' , check:'' , category :''
+    editorHtml : '',  theme: 'snow' , check:'' , category :'' , 
+    
 
         }
 
