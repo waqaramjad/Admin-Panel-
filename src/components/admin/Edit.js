@@ -102,6 +102,7 @@ pushData(){
         var todo = this.props.location.todo.editorHtml
         var title = this.props.location.todo.title
         console.log(title)
+        console.log(this.props.location)
         if(this.state.editorHtml==='')
         {
 

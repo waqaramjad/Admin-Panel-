@@ -74,29 +74,26 @@ export function renderArticles(params) {
         if(params== true){
             currentTodos=[]
         }
-        firebase.database().ref('articles/').on('child_added', (data) => {
-            let obj = data.val();
+        firebase.database().ref('articles/').on('value', (data) => {
+            let dataObject  = data.val();
+console.log('check render')
 
-            console.log('objobjobjobj',obj);
-            obj.id = data.key;
-            // console.log(obj.id)
-            // console.log(data.key)
-            currentTodos = currentTodos.concat(obj);
-            // console.log(POSTS)   
-            
-            // console.log(currentTodos,'currentTodoscurrentTodoscurrentTodos')
-            dispatch({ type: ActionTypes.POSTS, payload: currentTodos })
+            dispatch({ type: ActionTypes.POSTS, payload: dataObject })
         })
     }
 }
 
-export function deleteArticle(todoKey, index) {
+export function deleteArticle(UID, category ) {
 
     return dispatch => {
-        firebase.database().ref('articles/' + todoKey).remove()
+
+        console.log(UID)
+        console.log(category)
+        firebase.database().ref('articles/'+category+'/'+ UID).remove()
             .then((v) => {
-                currentTodos = currentTodos.slice(0, index).concat(currentTodos.slice(index + 1));
-                dispatch({ type: ActionTypes.POSTS, payload: currentTodos })
+                alert('Data Deleted')
+                // currentTodos = currentTodos.slice(0, index).concat(currentTodos.slice(index + 1));
+                // dispatch({ type: ActionTypes.POSTS, payload: currentTodos })
             });
     }
 }
@@ -107,9 +104,9 @@ export function editTodo(todoObj, index) {
     console.log(index )
     return dispatch => {
         // console.log(todoObj)
-        let updateKey =todoObj.id;
-        delete todoObj.id;
-        firebase.database().ref('articles/' + index).update(todoObj)
+        // let updateKey =todoObj.id;
+        // delete todoObj.id;
+        firebase.database().ref('/articles/Sports/' + index).update(todoObj)
         alert('Data Updated')
     }
 }
@@ -117,7 +114,9 @@ export function editTodo(todoObj, index) {
 
 export function postArticles(data) {
     return dispatch => {
-        firebase.database().ref('/articles' ).push(data)
+        var category = data.category
+        // console.log(data)
+        firebase.database().ref('/articles/'+category+'/' ).push(data)
             .then((data) => {
 
                 alert('Article Added')

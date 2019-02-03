@@ -11,7 +11,7 @@ import firebase from 'firebase';
 import { browserHistory } from 'react-router';
 // import Quill from 'quill';
 import FileUploader from "react-firebase-file-uploader";
-import { Panel , PanelGroup ,ProgressBar,  Button , Modal} from 'react-bootstrap';
+import { Panel , ButtonToolbar , PanelGroup ,ProgressBar,  Button , Modal , DropdownButton , MenuItem } from 'react-bootstrap';
 import ReactQuill from 'react-quill'; // ES6
 import '../Css/check.css'
 import PropTypes from 'prop-types'
@@ -19,7 +19,35 @@ import PropTypes from 'prop-types'
 var ReactDOMServer = require('react-dom/server');
 var HtmlToReactParser = require('html-to-react').Parser;
 
+const BUTTONS = ['Primary'];
 
+
+ 
+
+//  renderDropdownButton(title, i) {
+//   return (
+//     <DropdownButton
+//       bsStyle={title.toLowerCase()}
+//       title='Articles'
+//       key={i}
+//       id={`dropdown-basic-${i}`}
+//     >
+//       <MenuItem eventKey="Seminary"  onSelect={onSelect}>Seminary </MenuItem>
+//       <MenuItem eventKey="Sports" onSelect={onSelect}>Sports</MenuItem>
+//       <MenuItem eventKey="ChurchPlanning" onSelect={onSelect}>Church Planning</MenuItem>
+//       <MenuItem eventKey="Medical" onSelect={onSelect}>Medical</MenuItem>
+//       <MenuItem eventKey="CommunityDevelopment" onSelect={onSelect}>Community Development </MenuItem>
+//       <MenuItem eventKey="KingdomBusiness" onSelect={onSelect}>Kingdom Business</MenuItem>
+     
+     
+      
+//     </DropdownButton>
+//   );
+// }
+
+// const buttonsInstance = (
+//   <ButtonToolbar>{BUTTONS.map(this.renderDropdownButton)}</ButtonToolbar>
+// );
 
 var style = {
     mainDiv : {
@@ -39,7 +67,7 @@ class CreatePOst extends Component {
     isUploading: false,
     progress: 0,
     avatarURL: "" , 
-    editorHtml : '',  theme: 'snow' , check:''
+    editorHtml : '',  theme: 'snow' , check:'' , category :''
 
         }
 
@@ -47,6 +75,8 @@ class CreatePOst extends Component {
         this.handleChange = this.handleChange.bind(this)
         this.handleChangetitle = this.handleChangetitle.bind(this)
         this.pushData = this.pushData.bind(this)
+        this.onSelect = this.onSelect.bind(this)
+        this.renderDropdownButton = this.renderDropdownButton.bind(this)
 
    
     }
@@ -110,24 +140,41 @@ pushData(){
     var editorHtml = this.state.editorHtml
     var avatar = this.state.avatar
     var avatarURL = this.state.avatarURL
+    var category = this.state.category
     
     var dataObject = {
         title , 
         
         avatar , 
         avatarURL ,
-        editorHtml
+        editorHtml , 
+        category 
 
         
     }
-    this.props.postArticles(dataObject)
-this.setState({
-  title : '', 
-        
-        avatar :'', 
-        avatarURL :'',
-        editorHtml:''
-})
+    if(category==''){
+      alert('Please Select Category first ..')
+    }
+
+    else if (title=='' | editorHtml=='' | avatarURL=='' | avatar==''){
+
+      alert('Fill all fields including  title  , article , Thumbnail image')
+
+    }
+
+    
+    else{
+
+      this.props.postArticles(dataObject)
+  this.setState({
+    title : '', 
+          
+          avatar :'', 
+          avatarURL :'',
+          editorHtml:'' ,
+          
+  })
+    }
     console.log(dataObject)
        }
 
@@ -149,9 +196,36 @@ this.setState({
               console.log('check')
             }
           }
-
              
-              
+          onSelect(eventKey) {
+            // alert(`Alert from menu item.\neventKey: ${eventKey}`);
+
+            this.setState({
+              category : eventKey
+            })
+            console.log(this.state.category)
+          } 
+
+          renderDropdownButton(title, i) {
+            return (
+              <DropdownButton
+                bsStyle={title.toLowerCase()}
+                title='Articles'
+                key={i}
+                id={`dropdown-basic-${i}`}
+              >
+                <MenuItem eventKey="Seminary"  onSelect={this.onSelect}>Seminary </MenuItem>
+                <MenuItem eventKey="Sports" onSelect={this.onSelect}>Sports</MenuItem>
+                <MenuItem eventKey="ChurchPlanning" onSelect={this.onSelect}>Church Planning</MenuItem>
+                <MenuItem eventKey="Medical" onSelect={this.onSelect}>Medical</MenuItem>
+                <MenuItem eventKey="CommunityDevelopment"onSelect={this.onSelect}>Community Development </MenuItem>
+                <MenuItem eventKey="KingdomBusiness" onSelect={this.onSelect}>Kingdom Business</MenuItem>
+               
+               
+                
+              </DropdownButton>
+            );
+          }
 
 
     render() {
@@ -177,10 +251,6 @@ var reactHtml = ReactDOMServer.renderToStaticMarkup(reactElement);
   <input type="text" className="form-control" id="usr" style={{width: '70%'}} value={this.state.title} onChange={this.handleChangetitle} />
 
 </div>
-                 {/* <textarea name="body"
-          onChange={this.handleChange}
-          style={{height: 250 , width : '70%'}}
-          /> */}
 
 <div style={{marginRight:'30%'}}>
             <ReactQuill 
@@ -194,13 +264,16 @@ var reactHtml = ReactDOMServer.renderToStaticMarkup(reactElement);
               style={{qlEditor : {
                 minHeight: '18em'
               }}}
-             />
+              />
            </div>
 
      
 <br/>
+              <ButtonToolbar>{BUTTONS.map(this.renderDropdownButton)}</ButtonToolbar>
+<br/>
 
 <div>
+
         <form>
           {this.state.isUploading && <ProgressBar striped bsStyle="info" now={40} />}
           <label style={{backgroundColor: 'steelblue', color: 'white', padding: 10, borderRadius: 4, pointer: 'cursor'}}>
@@ -218,6 +291,8 @@ var reactHtml = ReactDOMServer.renderToStaticMarkup(reactElement);
           <img style={{width:'4%'}} src={this.state.avatarURL} />
           
         </form>
+
+
       </div>
       <br/>
 <button className="btn btn-primary btnHeight" type="button" onClick={this.pushData} >Post </button>

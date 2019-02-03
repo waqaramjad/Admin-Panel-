@@ -44,9 +44,28 @@ const style = {
 
     },
 
+    caregoryLabel : {
+        fontSize: '18px'
+    }
+
 
 }
+const ColoredLine = ({ color }) => (
+    <hr
+        style={{
+            color: color,
+            backgroundColor: color,
+            height: 1 , 
+            width : 'auto' ,
+            marginTop : 0 , 
+            
 
+        }}
+    />
+);
+
+
+var Sports = ''
 class Admin extends Component {
     constructor(props) {
 
@@ -55,7 +74,8 @@ class Admin extends Component {
         this.state = {
             currendata: {},
             POSTS: [],
-            statusForLoading: false
+            statusForLoading: false , 
+            Sports : undefined
 
         }
 
@@ -64,7 +84,15 @@ class Admin extends Component {
         console.log(this.props)
         console.log(this.props.POSTS)
         var checker = this.state.statusForLoading
+        if(this.props.POSTS!= undefined){
+
+            var myProps = this.props.POSTS['Sports']
+            this.setState({
+                Sports : myProps
+            })
+        }
         // this.props.renderArticles('checker');
+        console.log(this.state.Sports)
 
     }
 
@@ -74,31 +102,49 @@ class Admin extends Component {
 
     }
 
-    deleteArticle(index) {
-        console.log(index)
+    deleteArticle(UID , data ) {
+        console.log(data)
+        // console.log(id)
+        console.log(UID )
+        var category = data.category
         // console.log(this.props.todos[index],'index');
-        this.props.deleteArticle(this.props.POSTS[index].id, index)
+        this.props.deleteArticle(UID, category)
 
     }
+ 
+    componentWillReceiveProps(data){
+        if(data.POSTS['Sports']!=undefined){
+            var Sports = data.POSTS['Sports']
+            this.setState({
+Sports: Sports
+            })
+        }
+        else {
+            this.setState({
+                Sports: undefined
+                            })
+        }
+console.log('data', data)
+    }
 
+    editArticle(uid, data) {
 
-    editArticle(index, uid, todo) {
-
-        console.log(todo.title)
-        console.log(uid)
+        // console.log(todo)
+        // console.log(uid)
         var UID = uid
-        var title = todo.title
-        var editorHtml = todo.editorHtml
-        console.log(title)
-        console.log(editorHtml)
+        var title = data.title
+        var editorHtml = data.editorHtml
+        console.log(uid)
+        // console.log(index)
+        // console.log(editorHtml)
 
         history.push({
             pathname: '/Edit',
             UID: uid,
-            index: index,
+          
             title: title,
             ArticleData: editorHtml,
-            todo: todo
+            todo: data
         })
 
     }
@@ -129,8 +175,25 @@ class Admin extends Component {
     }
     render() {
 
+//         if(this.props.POSTS!=undefined){
+// var obj= this.props.POSTS
+// var Sp= obj['ChurchPlankoning']
+// Sports = Sp
+// console.log(Sports)
+// console.log(Sp)
+// // this.setState({
+// //     Sports : Sports
+// // })
+// // this.state.Sports
+// // console.log(this.state.Sports)
+//         //     Object.keys(obj).map(function(key, index) {
+//         //             console.log(obj['ChurchPlanning'])
+//         //               console.log(key)
+//         //               console.log(index)
+//         //             });
+//         }
         var a = this.state.statusForLoading
-        console.log(this.props)
+        console.log(this.props.POSTS)
         console.log(this.state.statusForLoading)
         console.log(this.props.location.status)
         if (this.state.statusForLoading === false && this.props.location.status == true) {
@@ -139,9 +202,27 @@ class Admin extends Component {
             })
         }
 
+        // if(this.props.POSTS!= '' && this.props.POSTS['Sports']!=undefined && this.state.Sports==undefined){
+
+        //     console.log(this.props.POSTS['Sports'])
+        //     var Sports1 =  this.props.POSTS['Sports']
+        //     console.log(Sports1)
+        //     // var myProps = this.props.POSTS['Sports']
+        //     this.setState({
+        //         Sports : Sports1
+        //     })
+        // }
+
         if (this.props.POSTS == '') {
             console.log('check')
+            var obj= this.props.POSTS
+var Sp = obj['ChurchPlankoning']
+Sports = Sp
+console.log(Sports)
+console.log(Sp)
+
             this.props.renderArticles(false);
+
         }
 
 
@@ -168,12 +249,25 @@ class Admin extends Component {
             div style = {
                 style.articleList
             } >
+<label style={style.caregoryLabel}> Sports</label>
+            <ColoredLine color="black" />
+            <ol className = "list-group" > {
+                  
+                       
+                // Object.keys(Sports).map((todos, index) => {
+                //     console.log(todos)
+                //  })
 
-
-            <
-            ol className = "list-group" > {
-                this.props.POSTS.map((todos, index) => {
-                    return ( <
+                    
+                    this.state.Sports!=undefined ?   Object.keys(this.state.Sports).map((data, index) => {
+                    //    var todos = this.state.Sports['data']
+                    console.log(this.state.Sports[todos])
+                    
+                    var todos= this.state.Sports[data]
+                    console.log(data)
+                    
+                     
+                               return ( <
                         Panel bsStyle = "primary"
                         key = {
                             index
@@ -193,7 +287,7 @@ class Admin extends Component {
                             style.btnDel
                         }
                         onClick = {
-                            this.deleteArticle.bind(this, index, )
+                            this.deleteArticle.bind(this,  data , todos)
                         } > Delete < /Button> <
                         Button bsStyle = "success"
                         bsSize = "small"
@@ -201,7 +295,7 @@ class Admin extends Component {
                             style.btnEdit
                         }
                         onClick = {
-                            this.editArticle.bind(this, index, todos.id, todos)
+                            this.editArticle.bind(this,  data, todos)
                         } > Edit < /Button> <
                         Button bsStyle = "info"
                         bsSize = "small"
@@ -230,15 +324,18 @@ class Admin extends Component {
                         /Panel>
 
                     )
-                })
-            } <
-            /ol> <
-            /div>
+                     }) : <label>No Data to Show</label>
+
+                   
+                
+            }<
+                /ol> 
+
+            </div>
 
 
 
-            <
-            /div>)
+            </div>)
         }
 
 
