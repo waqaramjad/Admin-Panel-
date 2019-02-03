@@ -73,10 +73,16 @@ pushData(){
         title , 
         editorHtml
     }
-    var UID = this.props.location.UID
-    console.log(this.props.location.todo.category)
-    var category = this.props.location.todo.category
-    this.props.editTodo(dataObject , UID , category)
+    // console.log(this.props.location.todo.category)
+    if(this.props.location.todo!=undefined){
+        var UID = this.props.location.UID
+        var category = this.props.location.todo.category
+
+        this.props.editTodo(dataObject , UID , category)
+    }
+    else{
+        alert('Firest Select Some Article ')
+    }
 
     console.log(dataObject)
         }
@@ -95,24 +101,44 @@ pushData(){
           })
               console.log('check')
             }
+
+            if(this.state.editorHtml==='' && this.props.location.todo!=undefined)
+            {
+                var todo = this.props.location.todo.editorHtml
+                var title = this.props.location.todo.title
+    
+                this.setState({
+                    editorHtml : todo  , 
+                    title : title 
+                })
+            }
+            else{
+                alert('Firest Select Some Article ')
+            }
+          }
+
+          componentWillReceiveProps(data){
+
+            console.log(data.props.location)
+            var todo = data.props.location.todo.editorHtml
+            var title = data.props.location.todo.title
+
+            {
+
+                this.setState({
+                    editorHtml : todo  , 
+                    title : title 
+                })
+            }
           }
 
     render() {
 
         // console.log(this.state.currendata)
         // console.log(this.props.location.todo)
-        var todo = this.props.location.todo.editorHtml
-        var title = this.props.location.todo.title
-        console.log(title)
+        // console.log(title)
         console.log(this.props.location)
-        if(this.state.editorHtml==='')
-        {
-
-            this.setState({
-                editorHtml : todo  , 
-                title : title 
-            })
-        }
+      
         
 
 
