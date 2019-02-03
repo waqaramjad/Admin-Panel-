@@ -400,6 +400,414 @@ console.log(Sp)
             }<
                 /ol> 
 
+
+
+{/**********************************************************************church  planning  **********************/}
+                <label style={style.caregoryLabel}> ChurchPlanning</label>
+            <ColoredLine color="black" />
+            <ol className = "list-group" > {
+                  
+              
+
+                    
+                    this.state.ChurchPlanning!=undefined ?   Object.keys(this.state.ChurchPlanning).map((data, index) => {
+                    //    var todos = this.state.Sports['data']
+                    console.log(this.state.Sports[todos])
+                    
+                    var todos= this.state.ChurchPlanning[data]
+                    console.log(data)
+                    
+                     
+                               return ( <
+                        Panel bsStyle = "primary"
+                        key = {
+                            index
+                        } >
+                        <
+                        Panel.Heading >
+                        <
+                        Panel.Title componentClass = "h3" >
+
+
+                        {
+                            todos.title
+                        } <
+                        Button bsStyle = "danger"
+                        bsSize = "small"
+                        style = {
+                            style.btnDel
+                        }
+                        onClick = {
+                            this.deleteArticle.bind(this,  data , todos)
+                        } > Delete < /Button> <
+                        Button bsStyle = "success"
+                        bsSize = "small"
+                        style = {
+                            style.btnEdit
+                        }
+                        onClick = {
+                            this.editArticle.bind(this,  data, todos)
+                        } > Edit < /Button> <
+                        Button bsStyle = "info"
+                        bsSize = "small"
+                        style = {
+                            style.btnEdit
+                        }
+                        onClick = {
+                            this.showPost.bind(this, index, todos)
+                        } > View < /Button> <
+                        /Panel.Title>
+
+                        <
+                        /Panel.Heading> <
+                        Panel.Body > < Image src = {
+                            todos.avatarURL
+                        }
+                        thumbnail style = {
+                            {
+                                height: '200px',
+                                width: null
+                            }
+                        }
+                        />;</Panel.Body >
+
+                        <
+                        /Panel>
+
+                    )
+                     }) : <label>No Data to Show</label>
+
+                   
+                
+            }<
+                /ol> 
+
+                {/**********************************************************************end   **********************/}
+{/**********************************************************************Seminary **********************/}
+                <label style={style.caregoryLabel}> Seminary</label>
+            <ColoredLine color="black" />
+            <ol className = "list-group" > {
+                  
+              
+
+                    
+                    this.state.Seminary!=undefined ?   Object.keys(this.state.Seminary).map((data, index) => {
+                    //    var todos = this.state.Sports['data']
+                    console.log(this.state.Sports[todos])
+                    
+                    var todos= this.state.Seminary[data]
+                    console.log(data)
+                    
+                     
+                               return ( <
+                        Panel bsStyle = "primary"
+                        key = {
+                            index
+                        } >
+                        <
+                        Panel.Heading >
+                        <
+                        Panel.Title componentClass = "h3" >
+
+
+                        {
+                            todos.title
+                        } <
+                        Button bsStyle = "danger"
+                        bsSize = "small"
+                        style = {
+                            style.btnDel
+                        }
+                        onClick = {
+                            this.deleteArticle.bind(this,  data , todos)
+                        } > Delete < /Button> <
+                        Button bsStyle = "success"
+                        bsSize = "small"
+                        style = {
+                            style.btnEdit
+                        }
+                        onClick = {
+                            this.editArticle.bind(this,  data, todos)
+                        } > Edit < /Button> <
+                        Button bsStyle = "info"
+                        bsSize = "small"
+                        style = {
+                            style.btnEdit
+                        }
+                        onClick = {
+                            this.showPost.bind(this, index, todos)
+                        } > View < /Button> <
+                        /Panel.Title>
+
+                        <
+                        /Panel.Heading> <
+                        Panel.Body > < Image src = {
+                            todos.avatarURL
+                        }
+                        thumbnail style = {
+                            {
+                                height: '200px',
+                                width: null
+                            }
+                        }
+                        />;</Panel.Body >
+
+                        <
+                        /Panel>
+
+                    )
+                     }) : <label>No Data to Show</label>
+
+                   
+                
+            }<
+                /ol> 
+
+                {/**********************************************************************end   **********************/}
+{/**********************************************************************Medical **********************/}
+                <label style={style.caregoryLabel}> Medical</label>
+            <ColoredLine color="black" />
+            <ol className = "list-group" > {
+                  
+              
+
+                    
+                    this.state.Medical!=undefined ?   Object.keys(this.state.Medical).map((data, index) => {
+                    //    var todos = this.state.Sports['data']
+                    // console.log(this.state.Sports[todos])
+                    
+                    var todos= this.state.Medical[data]
+                    console.log(data)
+                    
+                     
+                               return ( <
+                        Panel bsStyle = "primary"
+                        key = {
+                            index
+                        } >
+                        <
+                        Panel.Heading >
+                        <
+                        Panel.Title componentClass = "h3" >
+
+
+                        {
+                            todos.title
+                        } <
+                        Button bsStyle = "danger"
+                        bsSize = "small"
+                        style = {
+                            style.btnDel
+                        }
+                        onClick = {
+                            this.deleteArticle.bind(this,  data , todos)
+                        } > Delete < /Button> <
+                        Button bsStyle = "success"
+                        bsSize = "small"
+                        style = {
+                            style.btnEdit
+                        }
+                        onClick = {
+                            this.editArticle.bind(this,  data, todos)
+                        } > Edit < /Button> <
+                        Button bsStyle = "info"
+                        bsSize = "small"
+                        style = {
+                            style.btnEdit
+                        }
+                        onClick = {
+                            this.showPost.bind(this, index, todos)
+                        } > View < /Button> <
+                        /Panel.Title>
+
+                        <
+                        /Panel.Heading> <
+                        Panel.Body > < Image src = {
+                            todos.avatarURL
+                        }
+                        thumbnail style = {
+                            {
+                                height: '200px',
+                                width: null
+                            }
+                        }
+                        />;</Panel.Body >
+
+                        <
+                        /Panel>
+
+                    )
+                     }) : <label>No Data to Show</label>
+
+                   
+                
+            }<
+                /ol> 
+
+                {/**********************************************************************end   **********************/}
+{/**********************************************************************CommunityDevelopment  **********************/}
+                <label style={style.caregoryLabel}> Community Development</label>
+            <ColoredLine color="black" />
+            <ol className = "list-group" > {
+                  
+              
+
+                    
+                    this.state.CommunityDevelopment!=undefined ?   Object.keys(this.state.CommunityDevelopment).map((data, index) => {
+                    //    var todos = this.state.Sports['data']
+                    // console.log(this.state.Sports[todos])
+                    
+                    var todos= this.state.CommunityDevelopment[data]
+                    console.log(data)
+                    
+                     
+                               return ( <
+                        Panel bsStyle = "primary"
+                        key = {
+                            index
+                        } >
+                        <
+                        Panel.Heading >
+                        <
+                        Panel.Title componentClass = "h3" >
+
+
+                        {
+                            todos.title
+                        } <
+                        Button bsStyle = "danger"
+                        bsSize = "small"
+                        style = {
+                            style.btnDel
+                        }
+                        onClick = {
+                            this.deleteArticle.bind(this,  data , todos)
+                        } > Delete < /Button> <
+                        Button bsStyle = "success"
+                        bsSize = "small"
+                        style = {
+                            style.btnEdit
+                        }
+                        onClick = {
+                            this.editArticle.bind(this,  data, todos)
+                        } > Edit < /Button> <
+                        Button bsStyle = "info"
+                        bsSize = "small"
+                        style = {
+                            style.btnEdit
+                        }
+                        onClick = {
+                            this.showPost.bind(this, index, todos)
+                        } > View < /Button> <
+                        /Panel.Title>
+
+                        <
+                        /Panel.Heading> <
+                        Panel.Body > < Image src = {
+                            todos.avatarURL
+                        }
+                        thumbnail style = {
+                            {
+                                height: '200px',
+                                width: null
+                            }
+                        }
+                        />;</Panel.Body >
+
+                        <
+                        /Panel>
+
+                    )
+                     }) : <label>No Data to Show</label>
+
+                   
+                
+            }<
+                /ol> 
+
+                {/**********************************************************************end   **********************/}
+{/**********************************************************************KingdomBusiness  **********************/}
+                <label style={style.caregoryLabel}> Kingdom Business</label>
+            <ColoredLine color="black" />
+            <ol className = "list-group" > {
+                  
+              
+
+                    
+                    this.state.KingdomBusiness!=undefined ?   Object.keys(this.state.KingdomBusiness).map((data, index) => {
+                    //    var todos = this.state.Sports['data']
+                    // console.log(this.state.KingdomBusiness[todos])
+                    
+                    var todos= this.state.KingdomBusiness[data]
+                    console.log(data)
+                    
+                     
+                               return ( <
+                        Panel bsStyle = "primary"
+                        key = {
+                            index
+                        } >
+                        <
+                        Panel.Heading >
+                        <
+                        Panel.Title componentClass = "h3" >
+
+
+                        {
+                            todos.title
+                        } <
+                        Button bsStyle = "danger"
+                        bsSize = "small"
+                        style = {
+                            style.btnDel
+                        }
+                        onClick = {
+                            this.deleteArticle.bind(this,  data , todos)
+                        } > Delete < /Button> <
+                        Button bsStyle = "success"
+                        bsSize = "small"
+                        style = {
+                            style.btnEdit
+                        }
+                        onClick = {
+                            this.editArticle.bind(this,  data, todos)
+                        } > Edit < /Button> <
+                        Button bsStyle = "info"
+                        bsSize = "small"
+                        style = {
+                            style.btnEdit
+                        }
+                        onClick = {
+                            this.showPost.bind(this, index, todos)
+                        } > View < /Button> <
+                        /Panel.Title>
+
+                        <
+                        /Panel.Heading> <
+                        Panel.Body > < Image src = {
+                            todos.avatarURL
+                        }
+                        thumbnail style = {
+                            {
+                                height: '200px',
+                                width: null
+                            }
+                        }
+                        />;</Panel.Body >
+
+                        <
+                        /Panel>
+
+                    )
+                     }) : <label>No Data to Show</label>
+
+                   
+                
+            }<
+                /ol> 
+
+                {/**********************************************************************end   **********************/}
+
             </div>
 
 
