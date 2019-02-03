@@ -98,15 +98,16 @@ export function deleteArticle(UID, category ) {
     }
 }
 
-export function editTodo(todoObj, index) {
+export function editTodo(todoObj, index , category ) {
 
     console.log(todoObj )
     console.log(index )
+    console.log(category )
     return dispatch => {
         // console.log(todoObj)
         // let updateKey =todoObj.id;
         // delete todoObj.id;
-        firebase.database().ref('/articles/Sports/' + index).update(todoObj)
+        firebase.database().ref('/articles/'+category+'/' + index).update(todoObj)
         alert('Data Updated')
     }
 }

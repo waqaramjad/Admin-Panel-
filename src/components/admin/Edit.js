@@ -74,7 +74,9 @@ pushData(){
         editorHtml
     }
     var UID = this.props.location.UID
-    this.props.editTodo(dataObject , UID)
+    console.log(this.props.location.todo.category)
+    var category = this.props.location.todo.category
+    this.props.editTodo(dataObject , UID , category)
 
     console.log(dataObject)
         }
@@ -205,8 +207,8 @@ function mapDispatchToProp(dispatch) {
     console.log('dispatch')
     return ({
         // changeUserName: ()=>{dispatch(changeUserName())}
-        editTodo: (data , index ) => {
-            dispatch(editTodo(data , index))
+        editTodo: (data , index , category) => {
+            dispatch(editTodo(data , index , category))
         }
     })
 }
