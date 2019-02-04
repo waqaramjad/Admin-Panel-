@@ -377,17 +377,7 @@ console.log(Sp)
                         /Panel.Title>
 
                         <
-                        /Panel.Heading> <
-                        Panel.Body > < Image src = {
-                            todos.avatarURL
-                        }
-                        thumbnail style = {
-                            {
-                                height: '200px',
-                                width: null
-                            }
-                        }
-                        />;</Panel.Body >
+                        /Panel.Heading> 
 
                         <
                         /Panel>

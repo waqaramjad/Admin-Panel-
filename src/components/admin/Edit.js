@@ -48,7 +48,7 @@ class EditPost extends Component {
         }
 
 
-        // this.handleChange = this.handleChange.bind(this)
+        this.handleChange = this.handleChange.bind(this)
         this.handleChangetitle = this.handleChangetitle.bind(this)
         this.pushData = this.pushData.bind(this)
 
@@ -61,13 +61,22 @@ this.setState({
     title : event.target.value
 })
 
+
 console.log(this.state.title)
 }
+
+
+
+handleChange (html) {
+    console.log(html)
+      this.setState({ editorHtml: html });
+  }
 pushData(){
     
     console.log('this.state.value')
     var title = this.state.title
     var editorHtml = this.state.editorHtml
+    console.log(editorHtml)
 
     var dataObject = {
         title , 
