@@ -16,7 +16,8 @@ import {
     Panel,
     PanelGroup,
     Button,
-    Image
+    Image ,
+    Table
 } from 'react-bootstrap';
 
 import {
@@ -393,9 +394,24 @@ console.log(Sp)
 
 
 {/**********************************************************************church  planning  **********************/}
-                <label style={style.caregoryLabel}> ChurchPlanning</label>
+                <label style={style.caregoryLabel}> Church Planting</label>
             <ColoredLine color="black" />
-            <ol className = "list-group" > {
+
+            <Table striped bordered hover style={{border : '2px solid gray'}}>
+  <thead>
+    <tr >
+      <th>No</th>
+      <th>Title</th>
+      <th>Date</th>
+      <th>Author</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+
+            {
                   
               
 
@@ -408,70 +424,42 @@ console.log(Sp)
                     console.log(data)
                     
                      
-                               return ( <
-                        Panel bsStyle = "primary"
-                        key = {
-                            index
-                        } >
-                        <
-                        Panel.Heading >
-                        <
-                        Panel.Title componentClass = "h3" >
-
-
-                        {
-                            todos.title
-                        } <
+                               return (
+                                   
+                                
+                                <tr>
+      <td>{index}</td>
+      <td >{todos.title}</td>
+      <td>Mike </td>
+      <td>5 Feb , 2018</td>
+      <td><
                         Button bsStyle = "danger"
                         bsSize = "small"
-                        style = {
-                            style.btnDel
-                        }
+                       
                         onClick = {
                             this.deleteArticle.bind(this,  data , todos)
                         } > Delete < /Button> <
                         Button bsStyle = "success"
                         bsSize = "small"
-                        style = {
-                            style.btnEdit
-                        }
+                        
                         onClick = {
                             this.editArticle.bind(this,  data, todos)
                         } > Edit < /Button> <
                         Button bsStyle = "info"
                         bsSize = "small"
-                        style = {
-                            style.btnEdit
-                        }
+                        
                         onClick = {
                             this.showPost.bind(this, index, todos)
-                        } > View < /Button> <
-                        /Panel.Title>
-
-                        <
-                        /Panel.Heading> <
-                        Panel.Body > < Image src = {
-                            todos.avatarURL
-                        }
-                        thumbnail style = {
-                            {
-                                height: '200px',
-                                width: null
-                            }
-                        }
-                        />;</Panel.Body >
-
-                        <
-                        /Panel>
-
+                        } > View < /Button></td>
+    </tr>
+   
                     )
                      }) : <label>No Data to Show</label>
 
                    
                 
-            }<
-                /ol> 
-
+            } </tbody>
+            </Table>
                 {/**********************************************************************end   **********************/}
 {/**********************************************************************Seminary **********************/}
                 <label style={style.caregoryLabel}> Seminary</label>
@@ -530,17 +518,7 @@ console.log(Sp)
                         /Panel.Title>
 
                         <
-                        /Panel.Heading> <
-                        Panel.Body > < Image src = {
-                            todos.avatarURL
-                        }
-                        thumbnail style = {
-                            {
-                                height: '200px',
-                                width: null
-                            }
-                        }
-                        />;</Panel.Body >
+                        /Panel.Heading> 
 
                         <
                         /Panel>
@@ -550,10 +528,9 @@ console.log(Sp)
 
                    
                 
-            }<
-                /ol> 
-
-                {/**********************************************************************end   **********************/}
+            }
+            </ol>   
+                     {/**********************************************************************end   **********************/}
 {/**********************************************************************Medical **********************/}
                 <label style={style.caregoryLabel}> Medical</label>
             <ColoredLine color="black" />
@@ -611,17 +588,7 @@ console.log(Sp)
                         /Panel.Title>
 
                         <
-                        /Panel.Heading> <
-                        Panel.Body > < Image src = {
-                            todos.avatarURL
-                        }
-                        thumbnail style = {
-                            {
-                                height: '200px',
-                                width: null
-                            }
-                        }
-                        />;</Panel.Body >
+                        /Panel.Heading> 
 
                         <
                         /Panel>
@@ -692,17 +659,7 @@ console.log(Sp)
                         /Panel.Title>
 
                         <
-                        /Panel.Heading> <
-                        Panel.Body > < Image src = {
-                            todos.avatarURL
-                        }
-                        thumbnail style = {
-                            {
-                                height: '200px',
-                                width: null
-                            }
-                        }
-                        />;</Panel.Body >
+                        /Panel.Heading>
 
                         <
                         /Panel>
@@ -773,17 +730,7 @@ console.log(Sp)
                         /Panel.Title>
 
                         <
-                        /Panel.Heading> <
-                        Panel.Body > < Image src = {
-                            todos.avatarURL
-                        }
-                        thumbnail style = {
-                            {
-                                height: '200px',
-                                width: null
-                            }
-                        }
-                        />;</Panel.Body >
+                        /Panel.Heading>
 
                         <
                         /Panel>
