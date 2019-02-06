@@ -74,6 +74,19 @@ export function renderArticles(params) {
         if(params== true){
             currentTodos=[]
         }
+
+       var a =  firebase.database().ref('articles/ChurchPlanning').orderByChild('date').once('value').then(
+
+        (snapshot) => {
+            console.log(snapshot.val())
+            snapshot.forEach(date => {
+              let dt = date.snapshot()
+              this.dates.push(dt);
+            });
+            // console.log(this.dates);
+           }
+       );   
+       console.log(a)     
         firebase.database().ref('articles/').on('value', (data) => {
             let dataObject  = data.val();
 console.log('check render')

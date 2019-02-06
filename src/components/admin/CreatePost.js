@@ -20,6 +20,8 @@ var ReactDOMServer = require('react-dom/server');
 var HtmlToReactParser = require('html-to-react').Parser;
 
 const BUTTONS = ['Primary'];
+var CurrentDate = new Date()
+
 
 
  
@@ -68,7 +70,7 @@ class CreatePOst extends Component {
     progress: 0,
     avatarURL: "" , 
     editorHtml : '',  theme: 'snow' , check:'' , category :'' , 
-    
+date1 : ''    
 
         }
 
@@ -142,14 +144,23 @@ pushData(){
     var avatar = this.state.avatar
     var avatarURL = this.state.avatarURL
     var category = this.state.category
-    
+    // console.log(myDate.getDate())
+    var CurrentDate = new Date()
+
+    var date = CurrentDate.getTime()
+    console.log(date)
+    // this.setState({
+    //   date1 : date
+    // })
+// console.log(this.state.date1)
     var dataObject = {
         title , 
         
         avatar , 
         avatarURL ,
         editorHtml , 
-        category 
+        category ,
+        date
 
         
     }
@@ -173,6 +184,7 @@ pushData(){
           avatar :'', 
           avatarURL :'',
           editorHtml:'' ,
+          
           
   })
     }
@@ -236,21 +248,21 @@ pushData(){
       // console.log(myDate.getFullYear())
       // console.log(myDate.getTime())
 
-      var today = new Date(9949434629999);
-var dd = today.getDate();
-var mm = today.getMonth() + 1; //January is 0!
-var yyyy = today.getFullYear();
+      // var today = new Date(9949434629999);
+// var dd = today.getDate();
+// var mm = today.getMonth() + 1; //January is 0!
+// var yyyy = today.getFullYear();
 
-if (dd < 10) {
-  dd = '0' + dd;
-}
+// if (dd < 10) {
+//   dd = '0' + dd;
+// }
 
-if (mm < 10) {
-  mm = '0' + mm;
-}
+// if (mm < 10) {
+//   mm = '0' + mm;
+// }
 
-today = mm + '/' + dd + '/' + yyyy;
-console.log(today)
+// today = mm + '/' + dd + '/' + yyyy;
+// console.log(today)
 // document.write(today);
       
         var htmlInput = '<div><h1>Title</h1><p>A paragraph</p></div>';
