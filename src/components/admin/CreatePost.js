@@ -230,7 +230,29 @@ pushData(){
 
 
     render() {
-        console.log(this.state)
+      // var myDate = new Date()
+      // console.log(myDate.getDate())
+      // console.log(myDate)
+      // console.log(myDate.getFullYear())
+      // console.log(myDate.getTime())
+
+      var today = new Date(9949434629999);
+var dd = today.getDate();
+var mm = today.getMonth() + 1; //January is 0!
+var yyyy = today.getFullYear();
+
+if (dd < 10) {
+  dd = '0' + dd;
+}
+
+if (mm < 10) {
+  mm = '0' + mm;
+}
+
+today = mm + '/' + dd + '/' + yyyy;
+console.log(today)
+// document.write(today);
+      
         var htmlInput = '<div><h1>Title</h1><p>A paragraph</p></div>';
 var htmlToReactParser = new HtmlToReactParser();
 var reactElement = htmlToReactParser.parse(htmlInput);
