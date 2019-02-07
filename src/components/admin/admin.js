@@ -248,6 +248,50 @@ Sports: Sports
     }
     render() {
 
+
+
+        const obj1 = {
+            "20170007": {
+              "id": 1 , 
+              'sdf': 8
+            },
+            "20170008": {
+              "id" : 2, 
+              "dsf" :345
+            },
+            "20170009": {
+             "id": 3
+            },
+            "20170010": {
+              "id": 4
+            }
+          }
+          
+          const arrayReverseObj = (obj1) => {
+            let newArray = []
+          
+            Object.keys(obj1)
+              .sort()
+              .reverse()
+              .forEach(key => {
+                console.log(key)
+                newArray.push( {
+                'key':key, 
+                'title':obj1[key].title ,
+                'avatar':obj1[key].avatar ,
+                'editorHtml':obj1[key].editorHtml ,
+                'category':obj1[key].category ,
+                'date':obj1[key].date ,
+                })
+              })
+          
+            console.log(newArray)
+            return newArray  
+          }
+          
+          if(this.state.ChurchPlanning!=undefined)
+          arrayReverseObj(this.state.ChurchPlanning)
+           
 //         if(this.props.POSTS!=undefined){
 // var obj= this.props.POSTS
 // var Sp= obj['ChurchPlankoning']
@@ -418,9 +462,47 @@ console.log(Sp)
                     
                     this.state.ChurchPlanning!=undefined ?   Object.keys(this.state.ChurchPlanning).map((data, index) => {
                     //    var todos = this.state.Sports['data']
-                    console.log(this.state.Sports[todos])
-                    
                     var todos= this.state.ChurchPlanning[data]
+                    console.log(this.state.ChurchPlanning)
+
+var object = this.state.ChurchPlanning
+                     var newObject = {};
+        var keys = [];
+
+        for (var key in object) {
+            keys.push(key);
+        }
+console.log(keys)
+
+        for (var i = keys.length - 1; i >= 0; i--) {
+          var value = object[keys[i]];
+          newObject[keys[i]]= value;
+        }       
+
+        console.log(newObject)
+                    // console.log(Object.assign([],this.state.ChurchPlanning).reverse())
+
+                    
+                    
+                    console.log(this.state.Sports)
+                    console.log(todos.date)
+                    var today = new Date(todos.date);
+var dd = today.getDate();
+var mm = today.getMonth() + 1; //January is 0!
+var yyyy = today.getFullYear();
+
+if (dd < 10) {
+  dd = '0' + dd;
+}
+
+if (mm < 10) {
+  mm = '0' + mm;
+}
+
+today = mm + '/' + dd + '/' + yyyy;
+console.log(today)
+// document.write(today);
+                    
                     console.log(data)
                     
                      
@@ -431,7 +513,7 @@ console.log(Sp)
       <td>{index}</td>
       <td >{todos.title}</td>
       <td>Mike </td>
-      <td>5 Feb , 2018</td>
+      <td>{today}</td>
       <td><
                         Button bsStyle = "danger"
                         bsSize = "small"
