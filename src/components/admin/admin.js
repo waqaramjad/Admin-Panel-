@@ -96,10 +96,10 @@ class Admin extends Component {
        
         this.ChurchPlantingSort = this.ChurchPlantingSort.bind(this)
         this.SportsSort = this.SportsSort.bind(this)
-        // this.SeminarySort = this.SeminarySort.bind(this)
-        // this.MedicalSort = this.MedicalSort.bind(this)
-        // this.CommunityDevelopmentSort = this.CommunityDevelopmentSort.bind(this)
-        // this.KingdomBusinessSort = this.KingdomBusinessSort.bind(this)
+        this.SeminarySort = this.SeminarySort.bind(this)
+        this.MedicalSort = this.MedicalSort.bind(this)
+        this.CommunityDevelopmentSort = this.CommunityDevelopmentSort.bind(this)
+        this.KingdomBusinessSort = this.KingdomBusinessSort.bind(this)
         
         console.log('checki')
         console.log(this.props)
@@ -276,78 +276,78 @@ this.setState({
 
     /************************************* */
     /************************************* */
-//     ChurchPlantingSort(){
-//         var churchData = this.state.ChurchPlanning
-//         var churchObject = {}
-//         var ChurchPlantingArrReverse = ChurchPlantingArr.reverse()
-//         ChurchPlantingArrReverse.map((data , index )=>{
+    SeminarySort(){
+        var SeminaryData = this.state.Seminary
+        var SeminaryObject = {}
+        var SeminaryArrReverse = SeminaryArr.reverse()
+        SeminaryArrReverse.map((data , index )=>{
 
 
-//     var dummData = churchData[data]
-//     churchObject[data] = dummData
+    var dummData = SeminaryData[data]
+    SeminaryObject[data] = dummData
 
-//         })
-// this.setState({
-//     ChurchPlanning :  churchObject
-// })
-//     }
-
-
-    /************************************* */
-    /************************************* */
-//     ChurchPlantingSort(){
-//         var churchData = this.state.ChurchPlanning
-//         var churchObject = {}
-//         var ChurchPlantingArrReverse = ChurchPlantingArr.reverse()
-//         ChurchPlantingArrReverse.map((data , index )=>{
-
-
-//     var dummData = churchData[data]
-//     churchObject[data] = dummData
-
-//         })
-// this.setState({
-//     ChurchPlanning :  churchObject
-// })
-//     }
+        })
+this.setState({
+    Seminary :  SeminaryObject
+})
+    }
 
 
     /************************************* */
     /************************************* */
-//     ChurchPlantingSort(){
-//         var churchData = this.state.ChurchPlanning
-//         var churchObject = {}
-//         var ChurchPlantingArrReverse = ChurchPlantingArr.reverse()
-//         ChurchPlantingArrReverse.map((data , index )=>{
+    MedicalSort(){
+        var MedicalData = this.state.Medical
+        var MedicalObject = {}
+        var MedicalArrReverse = MedicalArr.reverse()
+        MedicalArrReverse.map((data , index )=>{
 
 
-//     var dummData = churchData[data]
-//     churchObject[data] = dummData
+    var dummData = MedicalData[data]
+    MedicalObject[data] = dummData
 
-//         })
-// this.setState({
-//     ChurchPlanning :  churchObject
-// })
-//     }
+        })
+this.setState({
+    Medical :  MedicalObject
+})
+    }
 
 
     /************************************* */
     /************************************* */
-//     ChurchPlantingSort(){
-//         var churchData = this.state.ChurchPlanning
-//         var churchObject = {}
-//         var ChurchPlantingArrReverse = ChurchPlantingArr.reverse()
-//         ChurchPlantingArrReverse.map((data , index )=>{
+    CommunityDevelopmentSort(){
+        var CommunityDevelopmentData = this.state.CommunityDevelopment
+        var CommunityDevelopmentObject = {}
+        var CommunityDevelopmentArrReverse = CommunityDevelopmentArr.reverse()
+        CommunityDevelopmentArrReverse.map((data , index )=>{
 
 
-//     var dummData = churchData[data]
-//     churchObject[data] = dummData
+    var dummData = CommunityDevelopmentData[data]
+    CommunityDevelopmentObject[data] = dummData
 
-//         })
-// this.setState({
-//     ChurchPlanning :  churchObject
-// })
-//     }
+        })
+this.setState({
+    CommunityDevelopment :  CommunityDevelopmentObject
+})
+    }
+
+
+    /************************************* */
+    /************************************* */
+    KingdomBusinessSort(){
+        var KingdomBusinessData = this.state.KingdomBusiness
+        var KingdomBusinessObject = {}
+        var KingdomBusinessArrReverse = KingdomBusinessArr.reverse()
+        KingdomBusinessArrReverse.map((data , index )=>{
+
+
+    var dummData = KingdomBusinessData[data]
+    KingdomBusinessObject[data] = dummData
+
+        })
+this.setState({
+    KingdomBusiness : KingdomBusinessObject
+})
+    }
 
 
     /************************************* */
@@ -714,7 +714,7 @@ console.log(today)
                 <th>Title</th>
                 <th>Author</th>
                 <th><button onClick = {
-                          this.ChurchPlantingSort}>Date</button></th>
+                          this.SeminarySort}>Date</button></th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -804,7 +804,7 @@ console.log(today)
                 <th>Title</th>
                 <th>Author</th>
                 <th><button onClick = {
-                          this.ChurchPlantingSort}>Date</button></th>
+                          this.MedicalSort}>Date</button></th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -896,7 +896,7 @@ console.log(today)
                 <th>Title</th>
                 <th>Author</th>
                 <th><button onClick = {
-                          this.ChurchPlantingSort}>Date</button></th>
+                          this.CommunityDevelopmentSort}>Date</button></th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -988,7 +988,7 @@ console.log(today)
                 <th>Title</th>
                 <th>Author</th>
                 <th><button onClick = {
-                          this.ChurchPlantingSort}>Date</button></th>
+                          this.KingdomBusinessSort}>Date</button></th>
                 <th>Actions</th>
               </tr>
             </thead>
