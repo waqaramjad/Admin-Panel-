@@ -24,6 +24,8 @@ import {
     apps
 } from 'firebase';
 
+var ChurchPlantingArr = []
+var SportsArr = []
 const style = {
 
     btnEdit: {
@@ -86,6 +88,7 @@ class Admin extends Component {
         }
 
         this.CreatePost = this.CreatePost.bind(this)
+        this.ChurchPlantingSort = this.ChurchPlantingSort.bind(this)
         console.log('checki')
         console.log(this.props)
         console.log(this.props.POSTS)
@@ -220,6 +223,28 @@ Sports: Sports
             todo: data
         })
 
+    }
+
+    ChurchPlantingSort(){
+        console.log(this.state.ChurchPlanning)
+        var churchData = this.state.ChurchPlanning
+        var churchObject = {}
+        var ChurchPlantingArrReverse = ChurchPlantingArr.reverse()
+        ChurchPlantingArrReverse.map((data , index )=>{
+console.log(data)
+console.log(index
+    )
+
+    var dummData = churchData[data]
+    console.log(dummData)
+    // console.log()
+    churchObject[data] = dummData
+
+        })
+console.log(churchObject)
+this.setState({
+    ChurchPlanning :  churchObject
+})
     }
     showPost(index, uid) {
 
@@ -361,6 +386,15 @@ console.log(Sp)
             onClick = {
                 this.CreatePost
             } > Add new Post < /button>
+            <
+            button className = "btn btn-success btnHeight"
+            style = {
+                style.addpostBtn
+            }
+            type = "button"
+            onClick = {
+                this.ChurchPlantingSort
+            } > check  < /button>
 
             <
             div style = {
@@ -375,6 +409,9 @@ console.log(Sp)
                     
                     this.state.Sports!=undefined ?   Object.keys(this.state.Sports).map((data, index) => {
                     //    var todos = this.state.Sports['data']
+                    
+                    SportsArr.push(data)
+console.log(SportsArr)
                     console.log(this.state.Sports[todos])
                     
                     var todos= this.state.Sports[data]
@@ -446,8 +483,9 @@ console.log(Sp)
     <tr >
       <th>No</th>
       <th>Title</th>
-      <th>Date</th>
       <th>Author</th>
+      <th><button onClick = {
+                this.ChurchPlantingSort}>Date</button></th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -464,7 +502,8 @@ console.log(Sp)
                     //    var todos = this.state.Sports['data']
                     var todos= this.state.ChurchPlanning[data]
                     console.log(this.state.ChurchPlanning)
-
+                    ChurchPlantingArr.push(data)
+console.log(ChurchPlantingArr)
 var object = this.state.ChurchPlanning
                      var newObject = {};
         var keys = [];
@@ -536,7 +575,7 @@ console.log(today)
     </tr>
    
                     )
-                     }) : <label>No Data to Show</label>
+                     }) : <tr><td colspan='5'>No Data to Show</td></tr>
 
                    
                 
