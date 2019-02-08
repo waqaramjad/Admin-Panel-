@@ -26,6 +26,11 @@ import {
 
 var ChurchPlantingArr = []
 var SportsArr = []
+var SportsArr = []
+var SeminaryArr = []
+var MedicalArr = []
+var CommunityDevelopmentArr = []
+var KingdomBusinessArr = []
 const style = {
 
     btnEdit: {
@@ -88,7 +93,14 @@ class Admin extends Component {
         }
 
         this.CreatePost = this.CreatePost.bind(this)
+       
         this.ChurchPlantingSort = this.ChurchPlantingSort.bind(this)
+        this.SportsSort = this.SportsSort.bind(this)
+        // this.SeminarySort = this.SeminarySort.bind(this)
+        // this.MedicalSort = this.MedicalSort.bind(this)
+        // this.CommunityDevelopmentSort = this.CommunityDevelopmentSort.bind(this)
+        // this.KingdomBusinessSort = this.KingdomBusinessSort.bind(this)
+        
         console.log('checki')
         console.log(this.props)
         console.log(this.props.POSTS)
@@ -225,27 +237,120 @@ Sports: Sports
 
     }
 
+    /************************************* */
     ChurchPlantingSort(){
-        console.log(this.state.ChurchPlanning)
         var churchData = this.state.ChurchPlanning
         var churchObject = {}
         var ChurchPlantingArrReverse = ChurchPlantingArr.reverse()
         ChurchPlantingArrReverse.map((data , index )=>{
-console.log(data)
-console.log(index
-    )
+
 
     var dummData = churchData[data]
-    console.log(dummData)
-    // console.log()
     churchObject[data] = dummData
 
         })
-console.log(churchObject)
 this.setState({
     ChurchPlanning :  churchObject
 })
     }
+
+
+    /************************************* */
+    /************************************* */
+    SportsSort(){
+        var SportsData = this.state.Sports
+        var SportsObject = {}
+        var SportsArrReverse = SportsArr.reverse()
+        SportsArrReverse.map((data , index )=>{
+
+
+    var dummData = SportsData[data]
+    SportsObject[data] = dummData
+
+        })
+this.setState({
+    Sports :  SportsObject
+})
+    }
+
+
+    /************************************* */
+    /************************************* */
+//     ChurchPlantingSort(){
+//         var churchData = this.state.ChurchPlanning
+//         var churchObject = {}
+//         var ChurchPlantingArrReverse = ChurchPlantingArr.reverse()
+//         ChurchPlantingArrReverse.map((data , index )=>{
+
+
+//     var dummData = churchData[data]
+//     churchObject[data] = dummData
+
+//         })
+// this.setState({
+//     ChurchPlanning :  churchObject
+// })
+//     }
+
+
+    /************************************* */
+    /************************************* */
+//     ChurchPlantingSort(){
+//         var churchData = this.state.ChurchPlanning
+//         var churchObject = {}
+//         var ChurchPlantingArrReverse = ChurchPlantingArr.reverse()
+//         ChurchPlantingArrReverse.map((data , index )=>{
+
+
+//     var dummData = churchData[data]
+//     churchObject[data] = dummData
+
+//         })
+// this.setState({
+//     ChurchPlanning :  churchObject
+// })
+//     }
+
+
+    /************************************* */
+    /************************************* */
+//     ChurchPlantingSort(){
+//         var churchData = this.state.ChurchPlanning
+//         var churchObject = {}
+//         var ChurchPlantingArrReverse = ChurchPlantingArr.reverse()
+//         ChurchPlantingArrReverse.map((data , index )=>{
+
+
+//     var dummData = churchData[data]
+//     churchObject[data] = dummData
+
+//         })
+// this.setState({
+//     ChurchPlanning :  churchObject
+// })
+//     }
+
+
+    /************************************* */
+    /************************************* */
+//     ChurchPlantingSort(){
+//         var churchData = this.state.ChurchPlanning
+//         var churchObject = {}
+//         var ChurchPlantingArrReverse = ChurchPlantingArr.reverse()
+//         ChurchPlantingArrReverse.map((data , index )=>{
+
+
+//     var dummData = churchData[data]
+//     churchObject[data] = dummData
+
+//         })
+// this.setState({
+//     ChurchPlanning :  churchObject
+// })
+//     }
+
+
+    /************************************* */
     showPost(index, uid) {
 
         var UID = uid
@@ -412,7 +517,7 @@ console.log(Sp)
                 <th>Title</th>
                 <th>Author</th>
                 <th><button onClick = {
-                          this.ChurchPlantingSort}>Date</button></th>
+                          this.SportsSort}>Date</button></th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -427,7 +532,7 @@ console.log(Sp)
                     this.state.Sports!=undefined ?   Object.keys(this.state.Sports).map((data, index) => {
                     //    var todos = this.state.Sports['data']
                    
-                    
+                    SportsArr.push(data)
                     var todos= this.state.Sports[data]
                     console.log(data)
                     
@@ -629,7 +734,7 @@ console.log(today)
                     var todos= this.state.Seminary[data]
                     console.log(data)
                     
-                     
+                    SeminaryArr.push(data)
                     var today = new Date(todos.date);
                     var dd = today.getDate();
                     var mm = today.getMonth() + 1; //January is 0!
@@ -717,7 +822,7 @@ console.log(today)
                     
                     var todos= this.state.Medical[data]
                     console.log(data)
-                    
+                    MedicalArr.push(data)
                     var today = new Date(todos.date);
                     var dd = today.getDate();
                     var mm = today.getMonth() + 1; //January is 0!
@@ -810,7 +915,7 @@ console.log(today)
                     
                     var todos= this.state.CommunityDevelopment[data]
                     console.log(data)
-                                        
+                    CommunityDevelopmentArr.push(data)        
                     var today = new Date(todos.date);
                     var dd = today.getDate();
                     var mm = today.getMonth() + 1; //January is 0!
@@ -900,7 +1005,7 @@ console.log(today)
                     
                     var todos= this.state.KingdomBusiness[data]
                     console.log(data)
-                    
+                    KingdomBusinessArr.push(data)
                     var today = new Date(todos.date);
                     var dd = today.getDate();
                     var mm = today.getMonth() + 1; //January is 0!
