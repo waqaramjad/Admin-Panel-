@@ -29,12 +29,12 @@ var SportsArr = []
 const style = {
 
     btnEdit: {
-        float: 'right',
+        // float: 'right',
         marginTop: '-7px',
         marginLeft: '6px'
     },
     btnDel: {
-        float: 'right',
+        // float: 'right',
         marginTop: '-7px',
     },
     addpostBtn: {
@@ -402,7 +402,21 @@ console.log(Sp)
             } >
 <label style={style.caregoryLabel}> Sports</label>
             <ColoredLine color="black" />
-            <ol className = "list-group" > {
+            <Table striped bordered hover style={{border : '2px solid gray'}}>
+            <thead>
+              <tr >
+                <th>No</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th><button onClick = {
+                          this.ChurchPlantingSort}>Date</button></th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+          
+            <tbody>
+            
+            {
                   
               
 
@@ -417,21 +431,28 @@ console.log(SportsArr)
                     var todos= this.state.Sports[data]
                     console.log(data)
                     
-                     
-                               return ( <
-                        Panel bsStyle = "primary"
-                        key = {
-                            index
-                        } >
-                        <
-                        Panel.Heading >
-                        <
-                        Panel.Title componentClass = "h3" >
-
-
-                        {
-                            todos.title
-                        } <
+                    var today = new Date(todos.date);
+                    var dd = today.getDate();
+                    var mm = today.getMonth() + 1; //January is 0!
+                    var yyyy = today.getFullYear();
+                    
+                    if (dd < 10) {
+                      dd = '0' + dd;
+                    }
+                    
+                    if (mm < 10) {
+                      mm = '0' + mm;
+                    }
+                    
+                    today = mm + '/' + dd + '/' + yyyy;
+                               return (
+                                <tr>
+                                <td>{index}</td>
+                                <td >{todos.title}</td>
+                                 <td>Mike </td>
+                                <td>{today}</td>
+                        
+                                <td>    <
                         Button bsStyle = "danger"
                         bsSize = "small"
                         style = {
@@ -455,22 +476,18 @@ console.log(SportsArr)
                         }
                         onClick = {
                             this.showPost.bind(this, index, todos)
-                        } > View < /Button> <
-                        /Panel.Title>
-
-                        <
-                        /Panel.Heading> 
-
-                        <
-                        /Panel>
-
+                        } > View < /Button> 
+                        
+                        </td>
+    </tr>
+   
                     )
-                     }) : <label>No Data to Show</label>
+                     }) : <tr><td colspan='5'>No Data to Show</td></tr>
 
                    
                 
-            }<
-                /ol> 
+            } </tbody>
+            </Table>
 
 
 
