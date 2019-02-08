@@ -70,13 +70,14 @@ class CreatePOst extends Component {
     progress: 0,
     avatarURL: "" , 
     editorHtml : '',  theme: 'snow' , check:'' , category :'' , 
-date1 : ''    
+date1 : ''  , author  : ''  
 
         }
 
 
         this.handleChange = this.handleChange.bind(this)
         this.handleChangetitle = this.handleChangetitle.bind(this)
+        this.handleChangeAuthor = this.handleChangeAuthor.bind(this)
         this.pushData = this.pushData.bind(this)
         this.onSelect = this.onSelect.bind(this)
         this.renderDropdownButton = this.renderDropdownButton.bind(this)
@@ -136,6 +137,13 @@ this.setState({
 
 console.log(this.state.title)
 }
+handleChangeAuthor(event){
+this.setState({
+    author : event.target.value
+})
+
+console.log(this.state.author)
+}
 pushData(){
     
     console.log('this.state.value')
@@ -144,6 +152,7 @@ pushData(){
     var avatar = this.state.avatar
     var avatarURL = this.state.avatarURL
     var category = this.state.category
+    var author = this.state.author
     // console.log(myDate.getDate())
     var CurrentDate = new Date()
 
@@ -160,7 +169,7 @@ pushData(){
         avatarURL ,
         editorHtml , 
         category ,
-        date
+        date , author
 
         
     }
@@ -168,9 +177,9 @@ pushData(){
       alert('Please Select Category first ..')
     }
 
-    else if (title=='' | editorHtml=='' | avatarURL=='' | avatar==''){
+    else if (title=='' | editorHtml=='' | avatarURL=='' | avatar=='' |author==''){
 
-      alert('Fill all fields including  title  , article , Thumbnail image')
+      alert('Fill all fields including  title  , article ,author ,  Thumbnail image')
 
     }
 
@@ -184,6 +193,7 @@ pushData(){
           avatar :'', 
           avatarURL :'',
           editorHtml:'' ,
+          author : ''
           
           
   })
@@ -242,29 +252,6 @@ pushData(){
 
 
     render() {
-      // var myDate = new Date()
-      // console.log(myDate.getDate())
-      // console.log(myDate)
-      // console.log(myDate.getFullYear())
-      // console.log(myDate.getTime())
-
-      // var today = new Date(9949434629999);
-// var dd = today.getDate();
-// var mm = today.getMonth() + 1; //January is 0!
-// var yyyy = today.getFullYear();
-
-// if (dd < 10) {
-//   dd = '0' + dd;
-// }
-
-// if (mm < 10) {
-//   mm = '0' + mm;
-// }
-
-// today = mm + '/' + dd + '/' + yyyy;
-// console.log(today)
-// document.write(today);
-      
         var htmlInput = '<div><h1>Title</h1><p>A paragraph</p></div>';
 var htmlToReactParser = new HtmlToReactParser();
 var reactElement = htmlToReactParser.parse(htmlInput);
@@ -309,6 +296,9 @@ var reactHtml = ReactDOMServer.renderToStaticMarkup(reactElement);
 
 <div>
 
+<label for="usr" style={{fontSize:16}}>Author:</label>
+  <input type="text" className="form-control" id="usr" style={{width: '60%'}} value={this.state.author} onChange={this.handleChangeAuthor} />
+  <br/>
         <form>
           {this.state.isUploading && <ProgressBar striped bsStyle="info" now={40} />}
           <label style={{backgroundColor: 'steelblue', color: 'white', padding: 10, borderRadius: 4, pointer: 'cursor'}}>

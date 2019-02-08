@@ -491,15 +491,7 @@ console.log(Sp)
             onClick = {
                 this.CreatePost
             } > Add new Post < /button>
-            <
-            button className = "btn btn-success btnHeight"
-            style = {
-                style.addpostBtn
-            }
-            type = "button"
-            onClick = {
-                this.ChurchPlantingSort
-            } > check  < /button>
+            
 
             <
             div style = {
@@ -673,7 +665,7 @@ console.log(today)
                                 <tr>
       <td>{index}</td>
       <td >{todos.title}</td>
-      <td>Mike </td>
+      <td>{todos.author} </td>
       <td>{today}</td>
       <td><
                         Button bsStyle = "danger"
@@ -729,7 +721,7 @@ console.log(today)
                     
                     this.state.Seminary!=undefined ?   Object.keys(this.state.Seminary).map((data, index) => {
                     //    var todos = this.state.Sports['data']
-                    console.log(this.state.Sports[todos])
+                    // console.log(this.state.Sports[todos])
                     
                     var todos= this.state.Seminary[data]
                     console.log(data)
