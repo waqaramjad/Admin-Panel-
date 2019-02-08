@@ -546,7 +546,7 @@ console.log(Sp)
                                 <tr>
                                 <td>{index}</td>
                                 <td >{todos.title}</td>
-                                 <td>Mike </td>
+                                 <td>{todos.author} </td>
                                 <td>{today}</td>
                         
                                 <td>    <
@@ -745,7 +745,7 @@ console.log(today)
                                 <tr>
                                 <td>{index}</td>
                                 <td >{todos.title}</td>
-                                 <td>Mike </td>
+                                 <td>{todos.author} </td>
                                 <td>{today}</td>
                        
                         
@@ -835,7 +835,7 @@ console.log(today)
                                 <tr>
                                 <td>{index}</td>
                                 <td >{todos.title}</td>
-                                 <td>Mike </td>
+                                 <td>{todos.author} </td>
                                 <td>{today}</td>
 
                                 
@@ -929,7 +929,7 @@ console.log(today)
                                 <tr>
                                 <td>{index}</td>
                                 <td >{todos.title}</td>
-                                 <td>Mike </td>
+                                 <td>{todos.author} </td>
                                 <td>{today}</td>
                         
                                 <td>    <
@@ -1017,7 +1017,7 @@ console.log(today)
                                 <tr>
                                 <td>{index}</td>
                                 <td >{todos.title}</td>
-                                 <td>Mike </td>
+                                 <td>{todos.author} </td>
                                 <td>{today}</td>
                         
                                 <td>    <
