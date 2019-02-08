@@ -400,6 +400,9 @@ console.log(Sp)
             div style = {
                 style.articleList
             } >
+
+
+
 <label style={style.caregoryLabel}> Sports</label>
             <ColoredLine color="black" />
             <Table striped bordered hover style={{border : '2px solid gray'}}>
@@ -423,10 +426,7 @@ console.log(Sp)
                     
                     this.state.Sports!=undefined ?   Object.keys(this.state.Sports).map((data, index) => {
                     //    var todos = this.state.Sports['data']
-                    
-                    SportsArr.push(data)
-console.log(SportsArr)
-                    console.log(this.state.Sports[todos])
+                   
                     
                     var todos= this.state.Sports[data]
                     console.log(data)
@@ -602,7 +602,22 @@ console.log(today)
 {/**********************************************************************Seminary **********************/}
                 <label style={style.caregoryLabel}> Seminary</label>
             <ColoredLine color="black" />
-            <ol className = "list-group" > {
+            <Table striped bordered hover style={{border : '2px solid gray'}}>
+            <thead>
+              <tr >
+                <th>No</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th><button onClick = {
+                          this.ChurchPlantingSort}>Date</button></th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+          
+            <tbody>
+            
+            
+             {
                   
               
 
@@ -615,20 +630,29 @@ console.log(today)
                     console.log(data)
                     
                      
-                               return ( <
-                        Panel bsStyle = "primary"
-                        key = {
-                            index
-                        } >
-                        <
-                        Panel.Heading >
-                        <
-                        Panel.Title componentClass = "h3" >
-
-
-                        {
-                            todos.title
-                        } <
+                    var today = new Date(todos.date);
+                    var dd = today.getDate();
+                    var mm = today.getMonth() + 1; //January is 0!
+                    var yyyy = today.getFullYear();
+                    
+                    if (dd < 10) {
+                      dd = '0' + dd;
+                    }
+                    
+                    if (mm < 10) {
+                      mm = '0' + mm;
+                    }
+                    
+                    today = mm + '/' + dd + '/' + yyyy;
+                               return ( 
+                                <tr>
+                                <td>{index}</td>
+                                <td >{todos.title}</td>
+                                 <td>Mike </td>
+                                <td>{today}</td>
+                       
+                        
+                                <td>    <
                         Button bsStyle = "danger"
                         bsSize = "small"
                         style = {
@@ -652,27 +676,37 @@ console.log(today)
                         }
                         onClick = {
                             this.showPost.bind(this, index, todos)
-                        } > View < /Button> <
-                        /Panel.Title>
-
-                        <
-                        /Panel.Heading> 
-
-                        <
-                        /Panel>
-
+                        } > View < /Button> 
+                        </td>
+    </tr>
+   
                     )
-                     }) : <label>No Data to Show</label>
+                     }) : <tr><td colspan='5'>No Data to Show</td></tr>
 
                    
                 
-            }
-            </ol>   
+            } </tbody>
+            </Table>
                      {/**********************************************************************end   **********************/}
 {/**********************************************************************Medical **********************/}
                 <label style={style.caregoryLabel}> Medical</label>
             <ColoredLine color="black" />
-            <ol className = "list-group" > {
+           
+            <Table striped bordered hover style={{border : '2px solid gray'}}>
+            <thead>
+              <tr >
+                <th>No</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th><button onClick = {
+                          this.ChurchPlantingSort}>Date</button></th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+          
+            <tbody>
+            
+            {
                   
               
 
@@ -684,21 +718,33 @@ console.log(today)
                     var todos= this.state.Medical[data]
                     console.log(data)
                     
-                     
-                               return ( <
-                        Panel bsStyle = "primary"
-                        key = {
-                            index
-                        } >
-                        <
-                        Panel.Heading >
-                        <
-                        Panel.Title componentClass = "h3" >
+                    var today = new Date(todos.date);
+                    var dd = today.getDate();
+                    var mm = today.getMonth() + 1; //January is 0!
+                    var yyyy = today.getFullYear();
+                    
+                    if (dd < 10) {
+                      dd = '0' + dd;
+                    }
+                    
+                    if (mm < 10) {
+                      mm = '0' + mm;
+                    }
+                    
+                    today = mm + '/' + dd + '/' + yyyy;
 
+                               return ( 
+                                  
+                                <tr>
+                                <td>{index}</td>
+                                <td >{todos.title}</td>
+                                 <td>Mike </td>
+                                <td>{today}</td>
 
-                        {
-                            todos.title
-                        } <
+                                
+                                
+                                
+                                <td>    <
                         Button bsStyle = "danger"
                         bsSize = "small"
                         style = {
@@ -722,28 +768,38 @@ console.log(today)
                         }
                         onClick = {
                             this.showPost.bind(this, index, todos)
-                        } > View < /Button> <
-                        /Panel.Title>
-
-                        <
-                        /Panel.Heading> 
-
-                        <
-                        /Panel>
-
+                        } > View < /Button> 
+                        </td>
+    </tr>
+   
                     )
-                     }) : <label>No Data to Show</label>
+                     }) : <tr><td colspan='5'>No Data to Show</td></tr>
 
                    
                 
-            }<
-                /ol> 
+            } </tbody>
+            </Table>
 
                 {/**********************************************************************end   **********************/}
 {/**********************************************************************CommunityDevelopment  **********************/}
                 <label style={style.caregoryLabel}> Community Development</label>
             <ColoredLine color="black" />
-            <ol className = "list-group" > {
+            <Table striped bordered hover style={{border : '2px solid gray'}}>
+            <thead>
+              <tr >
+                <th>No</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th><button onClick = {
+                          this.ChurchPlantingSort}>Date</button></th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+          
+            <tbody>
+ 
+            
+            {
                   
               
 
@@ -754,22 +810,32 @@ console.log(today)
                     
                     var todos= this.state.CommunityDevelopment[data]
                     console.log(data)
+                                        
+                    var today = new Date(todos.date);
+                    var dd = today.getDate();
+                    var mm = today.getMonth() + 1; //January is 0!
+                    var yyyy = today.getFullYear();
                     
+                    if (dd < 10) {
+                      dd = '0' + dd;
+                    }
+                    
+                    if (mm < 10) {
+                      mm = '0' + mm;
+                    }
+                    
+                    today = mm + '/' + dd + '/' + yyyy;
+
                      
-                               return ( <
-                        Panel bsStyle = "primary"
-                        key = {
-                            index
-                        } >
-                        <
-                        Panel.Heading >
-                        <
-                        Panel.Title componentClass = "h3" >
-
-
-                        {
-                            todos.title
-                        } <
+                               return (
+                                   
+                                <tr>
+                                <td>{index}</td>
+                                <td >{todos.title}</td>
+                                 <td>Mike </td>
+                                <td>{today}</td>
+                        
+                                <td>    <
                         Button bsStyle = "danger"
                         bsSize = "small"
                         style = {
@@ -793,28 +859,37 @@ console.log(today)
                         }
                         onClick = {
                             this.showPost.bind(this, index, todos)
-                        } > View < /Button> <
-                        /Panel.Title>
-
-                        <
-                        /Panel.Heading>
-
-                        <
-                        /Panel>
-
+                        } > View < /Button> 
+                        </td>
+    </tr>
+   
                     )
-                     }) : <label>No Data to Show</label>
+                     }) : <tr><td colspan='5'>No Data to Show</td></tr>
 
                    
                 
-            }<
-                /ol> 
+            } </tbody>
+            </Table>
 
                 {/**********************************************************************end   **********************/}
 {/**********************************************************************KingdomBusiness  **********************/}
                 <label style={style.caregoryLabel}> Kingdom Business</label>
             <ColoredLine color="black" />
-            <ol className = "list-group" > {
+            <Table striped bordered hover style={{border : '2px solid gray'}}>
+
+         <thead>
+              <tr >
+                <th>No</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th><button onClick = {
+                          this.ChurchPlantingSort}>Date</button></th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+          
+            <tbody>
+            {
                   
               
 
@@ -826,21 +901,29 @@ console.log(today)
                     var todos= this.state.KingdomBusiness[data]
                     console.log(data)
                     
-                     
-                               return ( <
-                        Panel bsStyle = "primary"
-                        key = {
-                            index
-                        } >
-                        <
-                        Panel.Heading >
-                        <
-                        Panel.Title componentClass = "h3" >
+                    var today = new Date(todos.date);
+                    var dd = today.getDate();
+                    var mm = today.getMonth() + 1; //January is 0!
+                    var yyyy = today.getFullYear();
+                    
+                    if (dd < 10) {
+                      dd = '0' + dd;
+                    }
+                    
+                    if (mm < 10) {
+                      mm = '0' + mm;
+                    }
+                    
+                    today = mm + '/' + dd + '/' + yyyy;
 
-
-                        {
-                            todos.title
-                        } <
+                               return (
+                                <tr>
+                                <td>{index}</td>
+                                <td >{todos.title}</td>
+                                 <td>Mike </td>
+                                <td>{today}</td>
+                        
+                                <td>    <
                         Button bsStyle = "danger"
                         bsSize = "small"
                         style = {
@@ -864,22 +947,19 @@ console.log(today)
                         }
                         onClick = {
                             this.showPost.bind(this, index, todos)
-                        } > View < /Button> <
-                        /Panel.Title>
-
-                        <
-                        /Panel.Heading>
-
-                        <
-                        /Panel>
-
+                        } > View < /Button> 
+                     
+                        </td>
+    </tr>
+   
                     )
-                     }) : <label>No Data to Show</label>
+                     }) : <tr><td colspan='5'>No Data to Show</td></tr>
 
                    
                 
-            }<
-                /ol> 
+            } </tbody>
+            </Table>
+
 
                 {/**********************************************************************end   **********************/}
 
