@@ -507,7 +507,7 @@ console.log(Sp)
               <tr >
                 <th>No</th>
                 <th className='title'>Title</th>
-                <th>Author</th>
+                <th className='Author'>Author</th>
                 <th><button onClick = {
                           this.SportsSort}>Date</button></th>
                 <th>Actions</th>
@@ -546,7 +546,7 @@ console.log(Sp)
                                 <tr>
                                 <td>{index}</td>
                                 <td className='title' >{todos.title}</td>
-                                 <td>{todos.author} </td>
+                                 <td className='Author'>{todos.author} </td>
                                 <td>{today}</td>
                         
                                 <td>    <
@@ -597,7 +597,7 @@ console.log(Sp)
     <tr >
       <th>No</th>
       <th className='title'>Title</th>
-      <th>Author</th>
+      <th className='Author'>Author</th>
       <th><button onClick = {
                 this.ChurchPlantingSort}>Date</button></th>
       <th>Actions</th>
@@ -665,7 +665,7 @@ console.log(today)
                                 <tr>
       <td>{index}</td>
       <td className='title' >{todos.title}</td>
-      <td>{todos.author} </td>
+      <td className='Author'>{todos.author} </td>
       <td>{today}</td>
       <td><
                         Button bsStyle = "danger"
@@ -704,7 +704,7 @@ console.log(today)
               <tr >
                 <th>No</th>
                 <th className='title'>Title</th>
-                <th>Author</th>
+                <th className='Author'>Author</th>
                 <th><button onClick = {
                           this.SeminarySort}>Date</button></th>
                 <th>Actions</th>
@@ -745,7 +745,7 @@ console.log(today)
                                 <tr>
                                 <td>{index}</td>
                                 <td className='title'>{todos.title}</td>
-                                 <td>{todos.author} </td>
+                                 <td className='Author'>{todos.author} </td>
                                 <td>{today}</td>
                        
                         
@@ -794,7 +794,7 @@ console.log(today)
               <tr >
                 <th>No</th>
                 <th className='title'>Title</th>
-                <th>Author</th>
+                <th className='Author'>Author</th>
                 <th><button onClick = {
                           this.MedicalSort}>Date</button></th>
                 <th>Actions</th>
@@ -835,7 +835,7 @@ console.log(today)
                                 <tr>
                                 <td>{index}</td>
                                 <td className='title' >{todos.title}</td>
-                                 <td>{todos.author} </td>
+                                 <td className='Author'>{todos.author} </td>
                                 <td>{today}</td>
 
                                 
@@ -886,7 +886,7 @@ console.log(today)
               <tr >
                 <th>No</th>
                 <th className='title'>Title</th>
-                <th>Author</th>
+                <th className='Author'>Author</th>
                 <th><button onClick = {
                           this.CommunityDevelopmentSort}>Date</button></th>
                 <th>Actions</th>
@@ -929,7 +929,7 @@ console.log(today)
                                 <tr>
                                 <td>{index}</td>
                                 <td className='title'>{todos.title}</td>
-                                 <td>{todos.author} </td>
+                                 <td className='Author'>{todos.author} </td>
                                 <td>{today}</td>
                         
                                 <td>    <
@@ -977,8 +977,8 @@ console.log(today)
          <thead>
               <tr >
                 <th>No</th>
-                <th>Title</th>
-                <th>Author</th>
+                <th className='title'>Title</th>
+                <th className='Author'>Author</th>
                 <th><button onClick = {
                           this.KingdomBusinessSort}>Date</button></th>
                 <th>Actions</th>
@@ -1016,8 +1016,8 @@ console.log(today)
                                return (
                                 <tr>
                                 <td>{index}</td>
-                                <td >{todos.title}</td>
-                                 <td>{todos.author} </td>
+                                <td className='title'>{todos.title}</td>
+                                 <td className='Author'>{todos.author} </td>
                                 <td>{today}</td>
                         
                                 <td>    <
