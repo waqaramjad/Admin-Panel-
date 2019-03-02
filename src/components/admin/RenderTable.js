@@ -13,19 +13,136 @@ import {
     Table
 } from 'react-bootstrap';
 import '../Css/admin.css'
-import style from '../Css/tableStyle'
+// import style from '../Css/tableStyle'
 
+
+const style = {
+
+    btnEdit: {
+        // float: 'right',
+        marginTop: '-7px',
+        marginLeft: '6px'
+    },
+    btnDel: {
+        // float: 'right',
+        marginTop: '-7px',
+    },
+    addpostBtn: {
+        marginLeft: '2%',
+        marginBottom: '3%'
+    },
+    articleList: {
+        marginLeft: '2%',
+        marginRight: '20%',
+
+    },
+
+    caregoryLabel : {
+        fontSize: '18px'
+    }
+
+
+}
+
+var SortArr = []
 export default class RenderTable extends Component {
     constructor(props) {
 
         super(props);
 
         this.state = {
-
+name : '' , 
+TableData : ' '
         }
+         this.sort = this.sort.bind(this)
     }
 
+
+    showPost(index, uid) {
+
+        var UID = uid
+    
+        history.push({
+            pathname: '/showPost',
+            UID: uid,
+            index: index,
+            title: 'title',
+            ArticleData: 'ArticleData'
+        })
+    
+    }
+    componentWillReceiveProps(props){
+        console.log('props')
+        console.log(props)
+        // var name = props.name
+// this.setState({
+
+    // })
+    }
+    editArticle(uid, data) {
+
+        // console.log(todo)
+        // console.log(uid)
+        var UID = uid
+        var title = data.title
+        var editorHtml = data.editorHtml
+        console.log(uid)
+        // console.log(index)
+        // console.log(editorHtml)
+
+        history.push({
+            pathname: '/Edit',
+            UID: uid,
+          
+            title: title,
+            ArticleData: editorHtml,
+            todo: data
+        })
+
+    }
+    CreatePost() {
+
+        history.push('/CreatePost')
+
+    }
+    deleteArticle(UID , data ) {
+        console.log(data)
+        // console.log(id)
+        console.log(UID )
+        var category = data.category
+        // console.log(this.props.todos[index],'index');
+        this.props.deleteArticle(UID, category)
+
+    }
+    sort(){
+        var sortData = this.state.data
+        var sortObject = {}
+        var sortArrReverse = SortArr.reverse()
+        sortArrReverse.map((data , index )=>{
+
+
+    var dummData = sortData[data]
+    sortObject[data] = dummData
+
+        })
+this.setState({
+    data :  sortObject
+})
+
+
+    }
+
+    componentWillReceiveProps(props){
+console.log(props)
+var data = props.data
+this.setState({
+data : data
+})
+
+    }
     render() {
+        console.log('props')
+        console.log(this.props)
 
         return (
 
@@ -35,8 +152,8 @@ export default class RenderTable extends Component {
             
             <label style = {
                 style.caregoryLabel
-            } > Sports </label> 
-            <ColoredLine color = "black" / >
+            } > {this.props.name} </label> 
+            {/* <ColoredLine color = "black" / > */}
             
             <Table striped bordered hover style = {
                 {
@@ -49,9 +166,11 @@ export default class RenderTable extends Component {
             <th> No </th> 
             <th className = 'title'> Title </th> 
             <th className = 'Author' > Author </th> 
-            <th> < button onClick = {
-                // this.SportsSort
-            } > Date </button></th>
+            <th> < button 
+            onClick = {
+                this.sort
+            } 
+            > Date </button></th>
             
             <th> Actions </th> 
             </tr> 
@@ -65,14 +184,12 @@ export default class RenderTable extends Component {
  
 
        
-       this.state.Seminary!=undefined ?   Object.keys(this.state.Seminary).map((data, index) => {
-       //    var todos = this.state.Sports['data']
-       // console.log(this.state.Sports[todos])
+       this.state.data!=undefined ?   Object.keys( this.state.data).map((data, index) => {
        
-       var todos= this.state.Seminary[data]
+       var todos=  this.state.data[data]
        console.log(data)
        
-       SeminaryArr.push(data)
+       SortArr.push(data)
        var today = new Date(todos.date);
        var dd = today.getDate();
        var mm = today.getMonth() + 1; //January is 0!
@@ -103,7 +220,8 @@ export default class RenderTable extends Component {
                         }
                         onClick = {
                             this.deleteArticle.bind(this,  data , todos)
-                        } > Delete </Button> 
+                        } 
+                        > Delete </Button> 
                         
                         <Button bsStyle = "success"
                         bsSize = "small"
@@ -112,7 +230,8 @@ export default class RenderTable extends Component {
                         }
                         onClick = {
                             this.editArticle.bind(this,  data, todos)
-                        } > Edit </Button> 
+                        } 
+                        > Edit </Button> 
                         <Button bsStyle = "info"
                         bsSize = "small"
                         style = {
@@ -120,7 +239,9 @@ export default class RenderTable extends Component {
                         }
                         onClick = {
                             this.showPost.bind(this, index, todos)
-                        } > View </Button> 
+                        } 
+                        
+                        > View </Button> 
               </td>
     </tr>
 

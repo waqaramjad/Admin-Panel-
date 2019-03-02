@@ -502,6 +502,7 @@ console.log(Sp)
 
 
 <label style={style.caregoryLabel}> Sports</label>
+<RenderTable name='Sports' data={this.state.Sports}/>
             <ColoredLine color="black" />
             <Table striped bordered hover style={{border : '2px solid gray'}}>
             <thead>

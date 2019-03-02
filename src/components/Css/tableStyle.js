@@ -1,4 +1,4 @@
-export const style = {
+export default  style = {
 
     btnEdit: {
         // float: 'right',
