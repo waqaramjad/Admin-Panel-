@@ -19,6 +19,7 @@ import {
     Image ,
     Table
 } from 'react-bootstrap';
+import RenderTable from './RenderTable'
 
 import {
     apps
