@@ -115,9 +115,11 @@ TableData : ' '
 
     }
     sort(){
+        console.log(this.state.data)
         var sortData = this.state.data
         var sortObject = {}
         var sortArrReverse = SortArr.reverse()
+        console.log(sortArrReverse)
         sortArrReverse.map((data , index )=>{
 
 
@@ -129,7 +131,7 @@ this.setState({
     data :  sortObject
 })
 
-
+console.log(sortObject)
     }
 
     componentWillReceiveProps(props){
