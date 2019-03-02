@@ -5,12 +5,12 @@ import firebase from 'firebase';
 
 
 var config = {
-    apiKey: "AIzaSyDcyZcVQP8nuHcMJsKd5wHxoaerUW6apZQ",
-    authDomain: "waqarchatapp.firebaseapp.com",
-    databaseURL: "https://waqarchatapp.firebaseio.com",
-    projectId: "waqarchatapp",
-    storageBucket: "waqarchatapp.appspot.com",
-    messagingSenderId: "676235345078"
+    apiKey: "AIzaSyBvPD_nMwTS8AZ2CPC65OyKu5s1XulUW_4",
+    authDomain: "go-ministries-app.firebaseapp.com",
+    databaseURL: "https://go-ministries-app.firebaseio.com",
+    projectId: "go-ministries-app",
+    storageBucket: "go-ministries-app.appspot.com",
+    messagingSenderId: "110885403273"
 };
 firebase.initializeApp(config);
 
@@ -31,7 +31,7 @@ export function signinAction(user) {
         firebase.auth().signInWithEmailAndPassword(user.email, user.password)
             .then((signedinUser) => {
                 console.log(signedinUser.uid)
-                if (signedinUser.uid == 'xZYBYObkTvNIGlpDQUoCQFW0VK63') {
+                if (signedinUser.uid == 'EpUKCLwlrzeJZPNIXRXaTJ1zix53') {
 
                     history.push('/Admin')
 

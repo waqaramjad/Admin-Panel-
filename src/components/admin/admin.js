@@ -23,7 +23,7 @@ import {
 import {
     apps
 } from 'firebase';
-
+import '../Css/admin.css'
 var ChurchPlantingArr = []
 var SportsArr = []
 var SportsArr = []
@@ -506,7 +506,7 @@ console.log(Sp)
             <thead>
               <tr >
                 <th>No</th>
-                <th>Title</th>
+                <th className='title'>Title</th>
                 <th>Author</th>
                 <th><button onClick = {
                           this.SportsSort}>Date</button></th>
@@ -545,7 +545,7 @@ console.log(Sp)
                                return (
                                 <tr>
                                 <td>{index}</td>
-                                <td >{todos.title}</td>
+                                <td className='title' >{todos.title}</td>
                                  <td>{todos.author} </td>
                                 <td>{today}</td>
                         
@@ -596,7 +596,7 @@ console.log(Sp)
   <thead>
     <tr >
       <th>No</th>
-      <th>Title</th>
+      <th className='title'>Title</th>
       <th>Author</th>
       <th><button onClick = {
                 this.ChurchPlantingSort}>Date</button></th>
@@ -664,7 +664,7 @@ console.log(today)
                                 
                                 <tr>
       <td>{index}</td>
-      <td >{todos.title}</td>
+      <td className='title' >{todos.title}</td>
       <td>{todos.author} </td>
       <td>{today}</td>
       <td><
@@ -703,7 +703,7 @@ console.log(today)
             <thead>
               <tr >
                 <th>No</th>
-                <th>Title</th>
+                <th className='title'>Title</th>
                 <th>Author</th>
                 <th><button onClick = {
                           this.SeminarySort}>Date</button></th>
@@ -744,7 +744,7 @@ console.log(today)
                                return ( 
                                 <tr>
                                 <td>{index}</td>
-                                <td >{todos.title}</td>
+                                <td className='title'>{todos.title}</td>
                                  <td>{todos.author} </td>
                                 <td>{today}</td>
                        
@@ -793,7 +793,7 @@ console.log(today)
             <thead>
               <tr >
                 <th>No</th>
-                <th>Title</th>
+                <th className='title'>Title</th>
                 <th>Author</th>
                 <th><button onClick = {
                           this.MedicalSort}>Date</button></th>
@@ -834,7 +834,7 @@ console.log(today)
                                   
                                 <tr>
                                 <td>{index}</td>
-                                <td >{todos.title}</td>
+                                <td className='title' >{todos.title}</td>
                                  <td>{todos.author} </td>
                                 <td>{today}</td>
 
@@ -885,7 +885,7 @@ console.log(today)
             <thead>
               <tr >
                 <th>No</th>
-                <th>Title</th>
+                <th className='title'>Title</th>
                 <th>Author</th>
                 <th><button onClick = {
                           this.CommunityDevelopmentSort}>Date</button></th>
@@ -928,7 +928,7 @@ console.log(today)
                                    
                                 <tr>
                                 <td>{index}</td>
-                                <td >{todos.title}</td>
+                                <td className='title'>{todos.title}</td>
                                  <td>{todos.author} </td>
                                 <td>{today}</td>
                         
