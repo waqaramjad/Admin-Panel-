@@ -37,27 +37,12 @@ export function signinAction(user) {
 
                 }
                 else {
-                    firebase.database().ref('users/' + user.selectUser + '/' + signedinUser.uid).once('value')
-                        .then((userData) => {
-                            console.log(userData.val());
-                            let userDataFromFirebase = userData.val()
-                            let myData = {
-                                email: userDataFromFirebase.email,
-                                uid: userDataFromFirebase.uid,
-                                userName: userDataFromFirebase.username
-
-                            }
-                            console.log(myData)
-                            dispatch({ type: ActionTypes.CURRENTUSERDATA, payload: myData })
-
-
-
-
-                            history.push('/' + user.selectUser)
-
-                        })
+                   alert(' Login Fail : Wrong email or Password')
                 }
-            })
+            }).catch((err)=>{
+                
+                              alert(err.message)
+                          })
     }
 
 }

@@ -30,6 +30,7 @@ class Signin extends Component {
             password: this.state.password ,
             // selectUser : this.state.selectUser
         }
+        console.log(user)
         this.setState({
             email: '',
             password: ''

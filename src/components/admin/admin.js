@@ -450,16 +450,6 @@ this.setState({
             })
         }
 
-        // if(this.props.POSTS!= '' && this.props.POSTS['Sports']!=undefined && this.state.Sports==undefined){
-
-        //     console.log(this.props.POSTS['Sports'])
-        //     var Sports1 =  this.props.POSTS['Sports']
-        //     console.log(Sports1)
-        //     // var myProps = this.props.POSTS['Sports']
-        //     this.setState({
-        //         Sports : Sports1
-        //     })
-        // }
 
         if (this.props.POSTS == '') {
             console.log('check')
@@ -502,9 +492,10 @@ console.log(Sp)
 
 
 <label style={style.caregoryLabel}> Sports</label>
-<RenderTable name='Sports' data={this.state.Sports}/>
-<RenderTable name='Seminary' data={this.state.Seminary}/>
-            <ColoredLine color="black" />
+           
+
+
+<ColoredLine color="black" />
             <Table striped bordered hover style={{border : '2px solid gray'}}>
             <thead>
               <tr >
