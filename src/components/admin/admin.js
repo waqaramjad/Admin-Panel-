@@ -106,6 +106,20 @@ class Admin extends Component {
         console.log(this.props)
         console.log(this.props.POSTS)
         var checker = this.state.statusForLoading
+        if(this.props.location.reload!=undefined){
+            
+            console.log('this.state.Sports')
+            // location.reload(false);
+            var test = this.props.POSTS
+            console.log(test)
+            
+            var b = test['Sports'] 
+            console.log(b)
+            this.setState({
+                Sports : b
+            })
+        }
+
         if(this.props.POSTS!= undefined){
 
             var myProps = this.props.POSTS['Sports']
@@ -500,11 +514,12 @@ console.log(Sp)
               
 
                     
-                    this.state.Sports!=undefined ?   Object.keys(this.state.Sports).map((data, index) => {
+                    this.props.POSTS['Sports']!=undefined ?   Object.keys( this.props.POSTS['Sports']).map((data, index) => {
                     //    var todos = this.state.Sports['data']
                    
                     SportsArr.push(data)
-                    var todos= this.state.Sports[data]
+                    var CompleteObj =  this.props.POSTS['Sports']
+                    var todos= CompleteObj[data]
                     console.log(data)
                     
                     var today = new Date(todos.date);
