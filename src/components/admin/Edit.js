@@ -88,6 +88,8 @@ pushData(){
         var category = this.props.location.todo.category
 
         this.props.editTodo(dataObject , UID , category)
+        // history.push('/Admin')
+
     }
     else{
         alert('Firest Select Some Article ')

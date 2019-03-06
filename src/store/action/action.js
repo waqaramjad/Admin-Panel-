@@ -105,8 +105,12 @@ export function editTodo(todoObj, index , category ) {
         // console.log(todoObj)
         // let updateKey =todoObj.id;
         // delete todoObj.id;
-        firebase.database().ref('/articles/'+category+'/' + index).update(todoObj)
-        alert('Data Updated')
+        firebase.database().ref('/articles/'+category+'/' + index).update(todoObj).then((data)=>{
+
+            history.push('/Admin')
+        })
+
+        // alert('Data Updated')
     }
 }
 
@@ -118,7 +122,8 @@ export function postArticles(data) {
         firebase.database().ref('/articles/'+category+'/' ).push(data)
             .then((data) => {
 
-                alert('Article Added')
+                history.push('/Admin')
+
             })
     }
 

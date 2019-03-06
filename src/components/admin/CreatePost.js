@@ -197,6 +197,7 @@ pushData(){
           
           
   })
+
     }
     console.log(dataObject)
        }
