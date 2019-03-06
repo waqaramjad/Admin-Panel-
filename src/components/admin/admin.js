@@ -606,9 +606,12 @@ console.log(Sp)
               
 
                     
-                    this.state.ChurchPlanning!=undefined ?   Object.keys(this.state.ChurchPlanning).map((data, index) => {
+                  this.props.POSTS['ChurchPlanning']!=undefined ?   Object.keys(this.props.POSTS['ChurchPlanning']).map((data, index) => {
                     //    var todos = this.state.Sports['data']
-                    var todos= this.state.ChurchPlanning[data]
+                    var CompleteObj =  this.props.POSTS['ChurchPlanning']
+                    var todos= CompleteObj[data]
+ 
+                    // var todos= this.state.ChurchPlanning[data]
                     console.log(this.state.ChurchPlanning)
                     ChurchPlantingArr.push(data)
 console.log(ChurchPlantingArr)
