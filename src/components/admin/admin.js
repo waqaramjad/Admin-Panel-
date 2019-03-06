@@ -135,6 +135,8 @@ class Admin extends Component {
     }
  
     componentWillReceiveProps(data){
+
+        console.log('receive props ')
         if(data.POSTS['Sports']!=undefined){
             var Sports = data.POSTS['Sports']
             this.setState({
@@ -423,23 +425,6 @@ this.setState({
           if(this.state.ChurchPlanning!=undefined)
           arrayReverseObj(this.state.ChurchPlanning)
            
-//         if(this.props.POSTS!=undefined){
-// var obj= this.props.POSTS
-// var Sp= obj['ChurchPlankoning']
-// Sports = Sp
-// console.log(Sports)
-// console.log(Sp)
-// // this.setState({
-// //     Sports : Sports
-// // })
-// // this.state.Sports
-// // console.log(this.state.Sports)
-//         //     Object.keys(obj).map(function(key, index) {
-//         //             console.log(obj['ChurchPlanning'])
-//         //               console.log(key)
-//         //               console.log(index)
-//         //             });
-//         }
         var a = this.state.statusForLoading
         console.log(this.props.POSTS)
         console.log(this.state.statusForLoading)

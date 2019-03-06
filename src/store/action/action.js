@@ -60,18 +60,6 @@ export function renderArticles(params) {
             currentTodos=[]
         }
 
-    //    var a =  firebase.database().ref('articles/ChurchPlanning').orderByChild('date').once('value').then(
-
-    //     (snapshot) => {
-    //         console.log(snapshot.val())
-    //         snapshot.forEach(date => {
-    //           let dt = date.snapshot()
-    //           this.dates.push(dt);
-    //         });
-    //         // console.log(this.dates);
-    //        }
-    //    );   
-    //    console.log(a)     
         firebase.database().ref('articles/').on('value', (data) => {
             let dataObject  = data.val();
 console.log('check render')
@@ -106,8 +94,16 @@ export function editTodo(todoObj, index , category ) {
         // let updateKey =todoObj.id;
         // delete todoObj.id;
         firebase.database().ref('/articles/'+category+'/' + index).update(todoObj).then((data)=>{
-
-            history.push('/Admin')
+            
+            setTimeout(function(){ history.push({
+                pathname : '/Admin' , 
+                UID : 'wiki test 1 ' , 
+                index : 'index' , 
+                reload : true 
+    
+            }) }, 1000);
+            
+            // history.push('/Admin')
         })
 
         // alert('Data Updated')
