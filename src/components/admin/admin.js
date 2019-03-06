@@ -75,6 +75,7 @@ const ColoredLine = ({ color }) => (
 
 
 var Sports = ''
+var no ;
 class Admin extends Component {
     constructor(props) {
 
@@ -92,7 +93,7 @@ class Admin extends Component {
             KingdomBusiness  : undefined , 
 
         }
-
+no = 1
         this.CreatePost = this.CreatePost.bind(this)
        
         this.ChurchPlantingSort = this.ChurchPlantingSort.bind(this)
@@ -392,6 +393,14 @@ this.setState({
             this.setState({
                 statusForLoading: true
             })
+            if(this.props.POSTS!=undefined && no==1){
+                console.log('test')
+                var data = this.props.POSTS
+                this.setState({
+                    Sports : data['Sports']
+                })
+                no++
+            }
     }
     render() {
 
@@ -514,12 +523,12 @@ console.log(Sp)
               
 
                     
-                    this.props.POSTS['Sports']!=undefined ?   Object.keys( this.props.POSTS['Sports']).map((data, index) => {
+                    this.state.Sports!=undefined ?   Object.keys( this.state.Sports).map((data, index) => {
                     //    var todos = this.state.Sports['data']
                    
                     SportsArr.push(data)
                     var CompleteObj =  this.props.POSTS['Sports']
-                    var todos= CompleteObj[data]
+                    var todos=  this.state.Sports[data]
                     console.log(data)
                     
                     var today = new Date(todos.date);
