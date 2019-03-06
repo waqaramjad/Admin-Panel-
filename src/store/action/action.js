@@ -95,13 +95,13 @@ export function editTodo(todoObj, index , category ) {
         // delete todoObj.id;
         firebase.database().ref('/articles/'+category+'/' + index).update(todoObj).then((data)=>{
             
-            setTimeout(function(){ history.push({
+           history.push({
                 pathname : '/Admin' , 
                 UID : 'wiki test 1 ' , 
                 index : 'index' , 
                 reload : true 
     
-            }) }, 1000);
+            }) 
             
             // history.push('/Admin')
         })

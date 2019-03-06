@@ -901,11 +901,12 @@ console.log(today)
               
 
                     
-                    this.state.CommunityDevelopment!=undefined ?   Object.keys(this.state.CommunityDevelopment).map((data, index) => {
+                  this.props.POSTS['CommunityDevelopment']!=undefined ?   Object.keys(this.props.POSTS['CommunityDevelopment']).map((data, index) => {
                     //    var todos = this.state.Sports['data']
                     // console.log(this.state.Sports[todos])
                     
-                    var todos= this.state.CommunityDevelopment[data]
+                    var CompleteObj =  this.props.POSTS['CommunityDevelopment']
+                    var todos= CompleteObj[data]
                     console.log(data)
                     CommunityDevelopmentArr.push(data)        
                     var today = new Date(todos.date);
@@ -991,11 +992,12 @@ console.log(today)
               
 
                     
-                    this.state.KingdomBusiness!=undefined ?   Object.keys(this.state.KingdomBusiness).map((data, index) => {
+                  this.props.POSTS['KingdomBusiness']!=undefined ?   Object.keys(this.props.POSTS['KingdomBusiness']).map((data, index) => {
                     //    var todos = this.state.Sports['data']
                     // console.log(this.state.KingdomBusiness[todos])
                     
-                    var todos= this.state.KingdomBusiness[data]
+                    var CompleteObj =  this.props.POSTS['KingdomBusiness']
+                    var todos= CompleteObj[data]
                     console.log(data)
                     KingdomBusinessArr.push(data)
                     var today = new Date(todos.date);
