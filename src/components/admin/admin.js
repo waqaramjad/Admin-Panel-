@@ -716,11 +716,13 @@ console.log(today)
               
 
                     
-                    this.state.Seminary!=undefined ?   Object.keys(this.state.Seminary).map((data, index) => {
+                  this.props.POSTS['Seminary']!=undefined ?   Object.keys(this.props.POSTS['Seminary']).map((data, index) => {
                     //    var todos = this.state.Sports['data']
                     // console.log(this.state.Sports[todos])
-                    
-                    var todos= this.state.Seminary[data]
+                    var CompleteObj =  this.props.POSTS['Seminary']
+                    var todos= CompleteObj[data]
+
+                    // var todos= this.state.Seminary[data]
                     console.log(data)
                     
                     SeminaryArr.push(data)
