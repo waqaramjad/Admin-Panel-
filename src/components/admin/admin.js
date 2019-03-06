@@ -25,6 +25,7 @@ import {
     apps
 } from 'firebase';
 import '../Css/admin.css'
+var no ;
 var ChurchPlantingArr = []
 var SportsArr = []
 var SportsArr = []
@@ -55,6 +56,12 @@ const style = {
 
     caregoryLabel : {
         fontSize: '18px'
+    } , 
+    tableStyle :{
+        border : '2px solid #d2b7b7'
+    } , 
+    ViewBtn :{
+       
     }
 
 
@@ -75,7 +82,6 @@ const ColoredLine = ({ color }) => (
 
 
 var Sports = ''
-var no ;
 class Admin extends Component {
     constructor(props) {
 
@@ -93,7 +99,7 @@ class Admin extends Component {
             KingdomBusiness  : undefined , 
 
         }
-no = 1
+
         this.CreatePost = this.CreatePost.bind(this)
        
         this.ChurchPlantingSort = this.ChurchPlantingSort.bind(this)
@@ -107,20 +113,6 @@ no = 1
         console.log(this.props)
         console.log(this.props.POSTS)
         var checker = this.state.statusForLoading
-        if(this.props.location.reload!=undefined){
-            
-            console.log('this.state.Sports')
-            // location.reload(false);
-            var test = this.props.POSTS
-            console.log(test)
-            
-            var b = test['Sports'] 
-            console.log(b)
-            this.setState({
-                Sports : b
-            })
-        }
-
         if(this.props.POSTS!= undefined){
 
             var myProps = this.props.POSTS['Sports']
@@ -130,6 +122,7 @@ no = 1
         }
         // this.props.renderArticles('checker');
         console.log(this.state.Sports)
+        no = 1
 
     }
 
@@ -150,8 +143,6 @@ no = 1
     }
  
     componentWillReceiveProps(data){
-
-        console.log('receive props ')
         if(data.POSTS['Sports']!=undefined){
             var Sports = data.POSTS['Sports']
             this.setState({
@@ -397,11 +388,20 @@ this.setState({
                 console.log('test')
                 var data = this.props.POSTS
                 this.setState({
-                    Sports : data['Sports']
+                    Sports : data['Sports'] , 
+                    Seminary  :data['Seminary '] , 
+                    ChurchPlanning  : data['ChurchPlanning'] , 
+                    Medical : data['Medical'] , 
+                    CommunityDevelopment : data[' CommunityDevelopment'] , 
+                    KingdomBusiness  : data['KingdomBusiness'] , 
+        
+
                 })
                 no++
             }
-    }
+   
+   
+        }
     render() {
 
 
@@ -448,6 +448,23 @@ this.setState({
           if(this.state.ChurchPlanning!=undefined)
           arrayReverseObj(this.state.ChurchPlanning)
            
+//         if(this.props.POSTS!=undefined){
+// var obj= this.props.POSTS
+// var Sp= obj['ChurchPlankoning']
+// Sports = Sp
+// console.log(Sports)
+// console.log(Sp)
+// // this.setState({
+// //     Sports : Sports
+// // })
+// // this.state.Sports
+// // console.log(this.state.Sports)
+//         //     Object.keys(obj).map(function(key, index) {
+//         //             console.log(obj['ChurchPlanning'])
+//         //               console.log(key)
+//         //               console.log(index)
+//         //             });
+//         }
         var a = this.state.statusForLoading
         console.log(this.props.POSTS)
         console.log(this.state.statusForLoading)
@@ -504,7 +521,7 @@ console.log(Sp)
 
 
 <ColoredLine color="black" />
-            <Table striped bordered hover style={{border : '2px solid gray'}}>
+            <Table striped bordered hover style={style.tableStyle}>
             <thead>
               <tr >
                 <th>No</th>
@@ -523,12 +540,11 @@ console.log(Sp)
               
 
                     
-                    this.state.Sports!=undefined ?   Object.keys( this.state.Sports).map((data, index) => {
+                    this.state.Sports!=undefined ?   Object.keys(this.state.Sports).map((data, index) => {
                     //    var todos = this.state.Sports['data']
                    
                     SportsArr.push(data)
-                    var CompleteObj =  this.props.POSTS['Sports']
-                    var todos=  this.state.Sports[data]
+                    var todos= this.state.Sports[data]
                     console.log(data)
                     
                     var today = new Date(todos.date);
@@ -595,7 +611,7 @@ console.log(Sp)
                 <label style={style.caregoryLabel}> Church Planting</label>
             <ColoredLine color="black" />
 
-            <Table striped bordered hover style={{border : '2px solid gray'}}>
+            <Table striped bordered hover style={style.tableStyle}>
   <thead>
     <tr >
       <th>No</th>
@@ -615,12 +631,9 @@ console.log(Sp)
               
 
                     
-                  this.props.POSTS['ChurchPlanning']!=undefined ?   Object.keys(this.props.POSTS['ChurchPlanning']).map((data, index) => {
+                    this.state.ChurchPlanning!=undefined ?   Object.keys(this.state.ChurchPlanning).map((data, index) => {
                     //    var todos = this.state.Sports['data']
-                    var CompleteObj =  this.props.POSTS['ChurchPlanning']
-                    var todos= CompleteObj[data]
- 
-                    // var todos= this.state.ChurchPlanning[data]
+                    var todos= this.state.ChurchPlanning[data]
                     console.log(this.state.ChurchPlanning)
                     ChurchPlantingArr.push(data)
 console.log(ChurchPlantingArr)
@@ -705,7 +718,7 @@ console.log(today)
 {/**********************************************************************Seminary **********************/}
                 <label style={style.caregoryLabel}> Seminary</label>
             <ColoredLine color="black" />
-            <Table striped bordered hover style={{border : '2px solid gray'}}>
+            <Table striped bordered hover style={style.tableStyle}>
             <thead>
               <tr >
                 <th>No</th>
@@ -725,13 +738,11 @@ console.log(today)
               
 
                     
-                  this.props.POSTS['Seminary']!=undefined ?   Object.keys(this.props.POSTS['Seminary']).map((data, index) => {
+                    this.state.Seminary!=undefined ?   Object.keys(this.state.Seminary).map((data, index) => {
                     //    var todos = this.state.Sports['data']
                     // console.log(this.state.Sports[todos])
-                    var CompleteObj =  this.props.POSTS['Seminary']
-                    var todos= CompleteObj[data]
-
-                    // var todos= this.state.Seminary[data]
+                    
+                    var todos= this.state.Seminary[data]
                     console.log(data)
                     
                     SeminaryArr.push(data)
@@ -781,7 +792,7 @@ console.log(today)
                         }
                         onClick = {
                             this.showPost.bind(this, index, todos)
-                        } > View < /Button> 
+                        } style={style.ViewBtn}> View < /Button> 
                         </td>
     </tr>
    
@@ -797,7 +808,7 @@ console.log(today)
                 <label style={style.caregoryLabel}> Medical</label>
             <ColoredLine color="black" />
            
-            <Table striped bordered hover style={{border : '2px solid gray'}}>
+            <Table striped bordered hover style={style.tableStyle}>
             <thead>
               <tr >
                 <th>No</th>
@@ -816,12 +827,11 @@ console.log(today)
               
 
                     
-                  this.props.POSTS['Medical']!=undefined ?   Object.keys(this.props.POSTS['Medical']).map((data, index) => {
+                    this.state.Medical!=undefined ?   Object.keys(this.state.Medical).map((data, index) => {
                     //    var todos = this.state.Sports['data']
                     // console.log(this.state.Sports[todos])
                     
-                    var CompleteObj =  this.props.POSTS['Medical']
-                    var todos= CompleteObj[data]
+                    var todos= this.state.Medical[data]
                     console.log(data)
                     MedicalArr.push(data)
                     var today = new Date(todos.date);
@@ -890,7 +900,7 @@ console.log(today)
 {/**********************************************************************CommunityDevelopment  **********************/}
                 <label style={style.caregoryLabel}> Community Development</label>
             <ColoredLine color="black" />
-            <Table striped bordered hover style={{border : '2px solid gray'}}>
+            <Table striped bordered hover style={style.tableStyle}>
             <thead>
               <tr >
                 <th>No</th>
@@ -910,12 +920,11 @@ console.log(today)
               
 
                     
-                  this.props.POSTS['CommunityDevelopment']!=undefined ?   Object.keys(this.props.POSTS['CommunityDevelopment']).map((data, index) => {
+                    this.state.CommunityDevelopment!=undefined ?   Object.keys(this.state.CommunityDevelopment).map((data, index) => {
                     //    var todos = this.state.Sports['data']
                     // console.log(this.state.Sports[todos])
                     
-                    var CompleteObj =  this.props.POSTS['CommunityDevelopment']
-                    var todos= CompleteObj[data]
+                    var todos= this.state.CommunityDevelopment[data]
                     console.log(data)
                     CommunityDevelopmentArr.push(data)        
                     var today = new Date(todos.date);
@@ -966,7 +975,9 @@ console.log(today)
                         }
                         onClick = {
                             this.showPost.bind(this, index, todos)
-                        } > View < /Button> 
+                        } 
+                        style={style.ViewBtn}
+                        > View < /Button> 
                         </td>
     </tr>
    
@@ -982,7 +993,7 @@ console.log(today)
 {/**********************************************************************KingdomBusiness  **********************/}
                 <label style={style.caregoryLabel}> Kingdom Business</label>
             <ColoredLine color="black" />
-            <Table striped bordered hover style={{border : '2px solid gray'}}>
+            <Table striped bordered hover style={style.tableStyle}>
 
          <thead>
               <tr >
@@ -1001,12 +1012,11 @@ console.log(today)
               
 
                     
-                  this.props.POSTS['KingdomBusiness']!=undefined ?   Object.keys(this.props.POSTS['KingdomBusiness']).map((data, index) => {
+                    this.state.KingdomBusiness!=undefined ?   Object.keys(this.state.KingdomBusiness).map((data, index) => {
                     //    var todos = this.state.Sports['data']
                     // console.log(this.state.KingdomBusiness[todos])
                     
-                    var CompleteObj =  this.props.POSTS['KingdomBusiness']
-                    var todos= CompleteObj[data]
+                    var todos= this.state.KingdomBusiness[data]
                     console.log(data)
                     KingdomBusinessArr.push(data)
                     var today = new Date(todos.date);
