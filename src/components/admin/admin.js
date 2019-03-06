@@ -807,11 +807,12 @@ console.log(today)
               
 
                     
-                    this.state.Medical!=undefined ?   Object.keys(this.state.Medical).map((data, index) => {
+                  this.props.POSTS['Medical']!=undefined ?   Object.keys(this.props.POSTS['Medical']).map((data, index) => {
                     //    var todos = this.state.Sports['data']
                     // console.log(this.state.Sports[todos])
                     
-                    var todos= this.state.Medical[data]
+                    var CompleteObj =  this.props.POSTS['Medical']
+                    var todos= CompleteObj[data]
                     console.log(data)
                     MedicalArr.push(data)
                     var today = new Date(todos.date);
