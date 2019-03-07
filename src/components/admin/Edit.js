@@ -115,12 +115,22 @@ pushData(){
 
             if(this.state.editorHtml==='' && this.props.location.todo!=undefined)
             {
-                var todo = this.props.location.todo.editorHtml
-                var title = this.props.location.todo.title
-    
+                var data = this
+                var editorHtml = data.props.location.todo.editorHtml
+                var title = data.props.location.todo.title
+                var avatarURL = data.props.location.todo.avatarURL
+                var category = data.props.location.todo.category
+                var author = data.props.location.todo.author
+                var avatar = data.props.location.todo.avatar
+        
                 this.setState({
-                    editorHtml : todo  , 
-                    title : title 
+                    title , 
+        
+                    avatar , 
+                    avatarURL ,
+                    editorHtml , 
+                    category ,
+                    author
                 })
             }
             else{
@@ -128,20 +138,29 @@ pushData(){
             }
           }
 
-          componentWillReceiveProps(data){
+        //   componentWillReceiveProps(data){
 
-            console.log(data.props.location)
-            var todo = data.props.location.todo.editorHtml
-            var title = data.props.location.todo.title
+        //     console.log(data.props.location)
+        //     var editorHtml = data.props.location.todo.editorHtml
+        //     var title = data.props.location.todo.title
+        //     var avatarURL = data.props.location.todo.avatarURL
+        //     var category = data.props.location.todo.category
+        //     var author = data.props.location.todo.author
+        //     var avatar = data.props.location.todo.avatar
 
-            {
+        //     {
 
-                this.setState({
-                    editorHtml : todo  , 
-                    title : title 
-                })
-            }
-          }
+        //         this.setState({
+        //             title , 
+        
+        //             avatar , 
+        //             avatarURL ,
+        //             editorHtml , 
+        //             category ,
+        //             author
+        //         })
+        //     }
+        //   }
 
     render() {
 
@@ -149,7 +168,7 @@ pushData(){
         // console.log(this.props.location.todo)
         // console.log(title)
         console.log(this.props.location)
-      
+        console.log(this.state)      
         
 
 
