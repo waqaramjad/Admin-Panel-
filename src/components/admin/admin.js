@@ -389,10 +389,10 @@ this.setState({
                 var data = this.props.POSTS
                 this.setState({
                     Sports : data['Sports'] , 
-                    Seminary  :data['Seminary '] , 
+                    Seminary  :data['Seminary'] , 
                     ChurchPlanning  : data['ChurchPlanning'] , 
                     Medical : data['Medical'] , 
-                    CommunityDevelopment : data[' CommunityDevelopment'] , 
+                    CommunityDevelopment : data['CommunityDevelopment'] , 
                     KingdomBusiness  : data['KingdomBusiness'] , 
         
 
