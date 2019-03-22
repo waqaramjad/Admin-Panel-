@@ -84,7 +84,7 @@ export function deleteArticle(UID, category ) {
     }
 }
 
-export function editTodo(todoObj, index , category ) {
+export function editTodo(todoObj, index , category , previous) {
 
     console.log(todoObj )
     console.log(index )
@@ -105,7 +105,7 @@ export function editTodo(todoObj, index , category ) {
             
             // history.push('/Admin')
         })
-
+// firebase.database().ref('/articles/'+previous+'/' + index).remove()
         // alert('Data Updated')
     }
 }

@@ -7,13 +7,17 @@ import { apps } from 'firebase';
 import { browserHistory } from 'react-router';
 import Quill from 'quill';
 import FileUploader from "react-firebase-file-uploader";
-import { Panel , PanelGroup ,ProgressBar,  Button} from 'react-bootstrap';
+// import { Panel , PanelGroup ,ProgressBar,  Button} from 'react-bootstrap';
 import ReactQuill from 'react-quill'; // ES6
 import '../Css/check.css'
 import PropTypes from 'prop-types'
+import firebase from 'firebase';
+import { Panel , ButtonToolbar , PanelGroup ,ProgressBar,  Button , Modal , DropdownButton , MenuItem } from 'react-bootstrap';
+
 // import { Resize, BaseModule } from 'quill-image-resize-module';
 var ReactDOMServer = require('react-dom/server');
 var HtmlToReactParser = require('html-to-react').Parser;
+const BUTTONS = ['Primary'];
 
 
 var style = {
@@ -43,7 +47,7 @@ class EditPost extends Component {
             isUploading: false,
             progress: 0,
             avatarURL: "" , 
-            editorHtml : '',  theme: 'snow' , check:''
+            editorHtml : '',  theme: 'snow' , check:'' , author  : '' , category : ''
 
         }
 
@@ -51,6 +55,9 @@ class EditPost extends Component {
         this.handleChange = this.handleChange.bind(this)
         this.handleChangetitle = this.handleChangetitle.bind(this)
         this.pushData = this.pushData.bind(this)
+        this.onSelect = this.onSelect.bind(this)
+        this.renderDropdownButton = this.renderDropdownButton.bind(this)
+        this.handleChangeAuthor = this.handleChangeAuthor.bind(this)
 
    
     }
@@ -65,29 +72,88 @@ this.setState({
 console.log(this.state.title)
 }
 
+  
+handleUploadStart = () => this.setState({ isUploading: true, progress: 0 });
+handleProgress = progress => this.setState({ progress });
+handleUploadError = error => {
+  this.setState({ isUploading: false });
+  console.error(error);
+};
+handleUploadSuccess = filename => {
 
+  console.log(this.state)
+  this.setState({ avatar: filename, progress: 100, isUploading: false });
+  firebase
+    .storage()
+    .ref("images")
+    .child(filename)
+    .getDownloadURL()
+    .then(url => this.setState({ avatarURL: url }));
+};
 
 handleChange (html) {
     console.log(html)
       this.setState({ editorHtml: html });
   }
+
+  handleChangeAuthor(event){
+    this.setState({
+        author : event.target.value
+    })
+    
+    console.log(this.state.author)
+    }
+  onSelect(eventKey) {
+    // alert(`Alert from menu item.\neventKey: ${eventKey}`);
+
+    this.setState({
+      category : eventKey
+    })
+    console.log(this.state.category)
+  } 
+  renderDropdownButton(title, i) {
+    return (
+      <DropdownButton
+        bsStyle={title.toLowerCase()}
+        title='Articles'
+        key={i}
+        id={`dropdown-basic-${i}`}
+      >
+        <MenuItem eventKey="Seminary"  onSelect={this.onSelect}>Seminary </MenuItem>
+        <MenuItem eventKey="Sports" onSelect={this.onSelect}>Sports</MenuItem>
+        <MenuItem eventKey="ChurchPlanning" onSelect={this.onSelect}>Church Planning</MenuItem>
+        <MenuItem eventKey="Medical" onSelect={this.onSelect}>Medical</MenuItem>
+        <MenuItem eventKey="CommunityDevelopment"onSelect={this.onSelect}>Community Development </MenuItem>
+        <MenuItem eventKey="KingdomBusiness" onSelect={this.onSelect}>Kingdom Business</MenuItem>
+       
+       
+        
+      </DropdownButton>
+    );
+  }
+
 pushData(){
     
     console.log('this.state.value')
     var title = this.state.title
     var editorHtml = this.state.editorHtml
+    var avatarURL =  this.state.avatarURL
+    var category = this.state.category
+    var author = this.state.author
+    var avatar = this.state.avatar
+
     console.log(editorHtml)
 
     var dataObject = {
         title , 
-        editorHtml
+        editorHtml , avatarURL,avatar,author
     }
     // console.log(this.props.location.todo.category)
     if(this.props.location.todo!=undefined){
         var UID = this.props.location.UID
-        var category = this.props.location.todo.category
+        var previous = this.props.location.todo.category
 
-        this.props.editTodo(dataObject , UID , category)
+        this.props.editTodo(dataObject , UID , category , previous)
         // history.push('/Admin')
 
     }
@@ -164,9 +230,6 @@ pushData(){
 
     render() {
 
-        // console.log(this.state.currendata)
-        // console.log(this.props.location.todo)
-        // console.log(title)
         console.log(this.props.location)
         console.log(this.state)      
         
@@ -202,8 +265,34 @@ pushData(){
            
            </div>
 
+           <ButtonToolbar>{BUTTONS.map(this.renderDropdownButton)}</ButtonToolbar>
+<br/>
 
-     
+<div>
+
+<label for="usr" style={{fontSize:16}}>Author:</label>
+  <input type="text" className="form-control" id="usr" style={{width: '60%'}} value={this.state.author} onChange={this.handleChangeAuthor} />
+  <br/>
+        <form>
+          {this.state.isUploading && <ProgressBar striped bsStyle="info" now={40} />}
+          <label style={{backgroundColor: 'steelblue', color: 'white', padding: 10, borderRadius: 4, pointer: 'cursor'}}>
+    Select your Image
+    <FileUploader
+      hidden
+      accept="image/*"
+      storageRef={firebase.storage().ref('images')}
+      onUploadStart={this.handleUploadStart}
+      onUploadError={this.handleUploadError}
+      onUploadSuccess={this.handleUploadSuccess}
+      onProgress={this.handleProgress}
+    />
+  </label> <br/>
+          <img style={{width:'4%'}} src={this.state.avatarURL} />
+
+          </form>
+
+
+</div> 
 <br/>
 <button className="btn btn-primary btnHeight" type="button" onClick={this.pushData} >Update </button>
 </div>
@@ -263,8 +352,8 @@ function mapDispatchToProp(dispatch) {
     console.log('dispatch')
     return ({
         // changeUserName: ()=>{dispatch(changeUserName())}
-        editTodo: (data , index , category) => {
-            dispatch(editTodo(data , index , category))
+        editTodo: (data , index , category , previous ) => {
+            dispatch(editTodo(data , index , category , previous))
         }
     })
 }
