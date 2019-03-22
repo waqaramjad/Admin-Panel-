@@ -48,7 +48,7 @@ class EditPost extends Component {
             progress: 0,
             avatarURL: "" , 
             editorHtml : '',  theme: 'snow' , check:'' , author  : '' , category : ''
-
+,date1:''
         }
 
 
@@ -142,11 +142,16 @@ pushData(){
     var author = this.state.author
     var avatar = this.state.avatar
 
+
+    var CurrentDate = new Date()
+
+    var date = CurrentDate.getTime()
+
     console.log(editorHtml)
 
     var dataObject = {
         title , 
-        editorHtml , avatarURL,avatar,author , category
+        editorHtml , avatarURL,avatar,author , category ,date
     }
     // console.log(this.props.location.todo.category)
     if(this.props.location.todo!=undefined){
