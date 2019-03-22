@@ -405,48 +405,48 @@ this.setState({
     render() {
 
 
-
-        const obj1 = {
-            "20170007": {
-              "id": 1 , 
-              'sdf': 8
-            },
-            "20170008": {
-              "id" : 2, 
-              "dsf" :345
-            },
-            "20170009": {
-             "id": 3
-            },
-            "20170010": {
-              "id": 4
-            }
-          }
+var that = this
+        // const obj1 = {
+        //     "20170007": {
+        //       "id": 1 , 
+        //       'sdf': 8
+        //     },
+        //     "20170008": {
+        //       "id" : 2, 
+        //       "dsf" :345
+        //     },
+        //     "20170009": {
+        //      "id": 3
+        //     },
+        //     "20170010": {
+        //       "id": 4
+        //     }
+        //   }
           
-          const arrayReverseObj = (obj1) => {
-            let newArray = []
+        //   const arrayReverseObj = (obj1) => {
+        //     let newArray = []
           
-            Object.keys(obj1)
-              .sort()
-              .reverse()
-              .forEach(key => {
-                console.log(key)
-                newArray.push( {
-                'key':key, 
-                'title':obj1[key].title ,
-                'avatar':obj1[key].avatar ,
-                'editorHtml':obj1[key].editorHtml ,
-                'category':obj1[key].category ,
-                'date':obj1[key].date ,
-                })
-              })
+        //     Object.keys(obj1)
+        //       .sort()
+        //       .reverse()
+        //       .forEach(key => {
+        //         console.log(key)
+        //         newArray.push( {
+        //         'key':key, 
+        //         'title':obj1[key].title ,
+        //         'avatar':obj1[key].avatar ,
+        //         'editorHtml':obj1[key].editorHtml ,
+        //         'category':obj1[key].category ,
+        //         'date':obj1[key].date ,
+        //         })
+        //       })
           
-            console.log(newArray)
-            return newArray  
-          }
+        //     console.log(newArray)
+        //     return newArray  
+        //   }
           
-          if(this.state.ChurchPlanning!=undefined)
-          arrayReverseObj(this.state.ChurchPlanning)
+        //   if(this.state.ChurchPlanning!=undefined)
+        //   arrayReverseObj(this.state.ChurchPlanning)
            
 //         if(this.props.POSTS!=undefined){
 // var obj= this.props.POSTS
@@ -524,11 +524,12 @@ console.log(Sp)
             <Table striped bordered hover style={style.tableStyle}>
             <thead>
               <tr >
-                <th>No</th>
+                <th className='No'>No</th>
                 <th className='title'>Title</th>
                 <th className='Author'>Author</th>
-                <th><button onClick = {
-                          this.SportsSort}>Date</button></th>
+                <th className='date'><button onClick = {
+                        ()=>{ if(this.state.Sports!=undefined)this.SportsSort}  
+                        }>Date</button></th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -614,11 +615,25 @@ console.log(Sp)
             <Table striped bordered hover style={style.tableStyle}>
   <thead>
     <tr >
-      <th>No</th>
+      <th className='No'>No</th>
       <th className='title'>Title</th>
       <th className='Author'>Author</th>
-      <th><button onClick = {
-                this.ChurchPlantingSort}>Date</button></th>
+      {/* <th className='date'><button onClick = {
+                this.ChurchPlantingSort}><i class="fa fa-fw fa-sort"></i>Date</button></th> */}
+      <th className='date' onClick = {
+        //   that.ChurchPlantingSort
+          this.state.ChurchPlanning!=undefined ?  that.ChurchPlantingSort : null
+          
+        //   ()=>{ 
+        // //   if(that.state.ChurchPlanting!=undefined) {
+        //   if(true) {
+        //     console.log('asd')   
+        //     that.ChurchPlantingSort
+        // }
+        // console.log(this.state.Seminary)
+        
+        // }  
+               }><i class="fa fa-fw fa-sort"></i>Date</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -721,10 +736,10 @@ console.log(today)
             <Table striped bordered hover style={style.tableStyle}>
             <thead>
               <tr >
-                <th>No</th>
+                <th className='No'>No</th>
                 <th className='title'>Title</th>
                 <th className='Author'>Author</th>
-                <th><button onClick = {
+                <th className='date'><button onClick = {
                           this.SeminarySort}>Date</button></th>
                 <th>Actions</th>
               </tr>
@@ -811,11 +826,16 @@ console.log(today)
             <Table striped bordered hover style={style.tableStyle}>
             <thead>
               <tr >
-                <th>No</th>
+                <th className='No'>No</th>
                 <th className='title'>Title</th>
                 <th className='Author'>Author</th>
-                <th><button onClick = {
-                          this.MedicalSort}>Date</button></th>
+                <th className='date' > 
+                          <div onClick = {
+                        //   this.MedicalSort
+                        that.MedicalSort    
+                        //   this.state.Medical!=undefined ?  that.MedicalSort : null
+
+                          }><i class="fa fa-fw fa-sort"></i>Date</div></th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -832,6 +852,8 @@ console.log(today)
                     // console.log(this.state.Sports[todos])
                     
                     var todos= this.state.Medical[data]
+                    if(todos==undefined)
+                    window.location.reload();
                     console.log(data)
                     MedicalArr.push(data)
                     var today = new Date(todos.date);
@@ -903,10 +925,10 @@ console.log(today)
             <Table striped bordered hover style={style.tableStyle}>
             <thead>
               <tr >
-                <th>No</th>
+                <th className='No'>No</th>
                 <th className='title'>Title</th>
                 <th className='Author'>Author</th>
-                <th><button onClick = {
+                <th className='date'><button onClick = {
                           this.CommunityDevelopmentSort}>Date</button></th>
                 <th>Actions</th>
               </tr>
@@ -997,10 +1019,10 @@ console.log(today)
 
          <thead>
               <tr >
-                <th>No</th>
+                <th className='No'>No</th>
                 <th className='title'>Title</th>
                 <th className='Author'>Author</th>
-                <th><button onClick = {
+                <th className='date'><button onClick = {
                           this.KingdomBusinessSort}>Date</button></th>
                 <th>Actions</th>
               </tr>
