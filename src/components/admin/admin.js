@@ -527,10 +527,10 @@ console.log(Sp)
                 <th className='No'>No</th>
                 <th className='title'>Title</th>
                 <th className='Author'>Author</th>
-                <th className='date'><button onClick = {
-                        ()=>{ if(this.state.Sports!=undefined)this.SportsSort}  
-                        }>Date</button></th>
-                <th>Actions</th>
+                <th className='date' onClick = {
+                    this.state.Sports!=undefined ?  that.SportsSort : null
+                         }><i class="fa fa-fw fa-sort"></i>Date</th>
+                          <th>Actions</th>
               </tr>
             </thead>
           
@@ -618,21 +618,8 @@ console.log(Sp)
       <th className='No'>No</th>
       <th className='title'>Title</th>
       <th className='Author'>Author</th>
-      {/* <th className='date'><button onClick = {
-                this.ChurchPlantingSort}><i class="fa fa-fw fa-sort"></i>Date</button></th> */}
       <th className='date' onClick = {
-        //   that.ChurchPlantingSort
           this.state.ChurchPlanning!=undefined ?  that.ChurchPlantingSort : null
-          
-        //   ()=>{ 
-        // //   if(that.state.ChurchPlanting!=undefined) {
-        //   if(true) {
-        //     console.log('asd')   
-        //     that.ChurchPlantingSort
-        // }
-        // console.log(this.state.Seminary)
-        
-        // }  
                }><i class="fa fa-fw fa-sort"></i>Date</th>
       <th>Actions</th>
     </tr>
@@ -739,8 +726,9 @@ console.log(today)
                 <th className='No'>No</th>
                 <th className='title'>Title</th>
                 <th className='Author'>Author</th>
-                <th className='date'><button onClick = {
-                          this.SeminarySort}>Date</button></th>
+                <th className='date' onClick = {
+          this.state.Seminary!=undefined ?  that.SeminarySort : null
+               }><i class="fa fa-fw fa-sort"></i>Date</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -829,13 +817,9 @@ console.log(today)
                 <th className='No'>No</th>
                 <th className='title'>Title</th>
                 <th className='Author'>Author</th>
-                <th className='date' > 
-                          <div onClick = {
-                        //   this.MedicalSort
-                        that.MedicalSort    
-                        //   this.state.Medical!=undefined ?  that.MedicalSort : null
-
-                          }><i class="fa fa-fw fa-sort"></i>Date</div></th>
+                <th className='date' onClick = {
+          this.state.Medical!=undefined ?  that.MedicalSort : null
+               }><i class="fa fa-fw fa-sort"></i>Date</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -928,8 +912,9 @@ console.log(today)
                 <th className='No'>No</th>
                 <th className='title'>Title</th>
                 <th className='Author'>Author</th>
-                <th className='date'><button onClick = {
-                          this.CommunityDevelopmentSort}>Date</button></th>
+                <th className='date' onClick = {
+          this.state.CommunityDevelopment!=undefined ?  that.CommunityDevelopmentSort : null
+               }><i class="fa fa-fw fa-sort"></i>Date</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -1022,8 +1007,9 @@ console.log(today)
                 <th className='No'>No</th>
                 <th className='title'>Title</th>
                 <th className='Author'>Author</th>
-                <th className='date'><button onClick = {
-                          this.KingdomBusinessSort}>Date</button></th>
+                <th className='date' onClick = {
+          this.state.KingdomBusiness!=undefined ?  that.KingdomBusinessSort : null
+               }><i class="fa fa-fw fa-sort"></i>Date</th>
                 <th>Actions</th>
               </tr>
             </thead>
