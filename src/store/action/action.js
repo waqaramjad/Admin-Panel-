@@ -28,6 +28,9 @@ export function changeUserName() {
 
 export function signinAction(user) {
     return dispatch => {
+
+        
+        console.log(firebase.auth().currentUser)
         firebase.auth().signInWithEmailAndPassword(user.email, user.password)
             .then((signedinUser) => {
                 console.log(signedinUser.uid)

@@ -22,35 +22,6 @@ var HtmlToReactParser = require('html-to-react').Parser;
 const BUTTONS = ['Primary'];
 var CurrentDate = new Date()
 
-
-
- 
-
-//  renderDropdownButton(title, i) {
-//   return (
-//     <DropdownButton
-//       bsStyle={title.toLowerCase()}
-//       title='Articles'
-//       key={i}
-//       id={`dropdown-basic-${i}`}
-//     >
-//       <MenuItem eventKey="Seminary"  onSelect={onSelect}>Seminary </MenuItem>
-//       <MenuItem eventKey="Sports" onSelect={onSelect}>Sports</MenuItem>
-//       <MenuItem eventKey="ChurchPlanning" onSelect={onSelect}>Church Planning</MenuItem>
-//       <MenuItem eventKey="Medical" onSelect={onSelect}>Medical</MenuItem>
-//       <MenuItem eventKey="CommunityDevelopment" onSelect={onSelect}>Community Development </MenuItem>
-//       <MenuItem eventKey="KingdomBusiness" onSelect={onSelect}>Kingdom Business</MenuItem>
-     
-     
-      
-//     </DropdownButton>
-//   );
-// }
-
-// const buttonsInstance = (
-//   <ButtonToolbar>{BUTTONS.map(this.renderDropdownButton)}</ButtonToolbar>
-// );
-
 var style = {
     mainDiv : {
         marginLeft : '2%'

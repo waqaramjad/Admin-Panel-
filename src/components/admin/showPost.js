@@ -69,17 +69,6 @@ pushData(){
     console.log('this.state.value')
     // var title = this.state.title
     var textArea = this.state.textArea
-
-    // var dataObject = {
-    //     title , 
-    //     textArea
-    // }
-    // var UID = this.props.location.UID
-    // var editorHtml = this.props.location.UID.editorHtml
-    // var title = this.props.location.UID.title
-    // this.props.editTodo(dataObject , UID)
-
-    // console.log(dataObject)
         }
 
 
@@ -168,7 +157,6 @@ function mapStateToProp(state) {
 function mapDispatchToProp(dispatch) {
     console.log('dispatch')
     return ({
-        // changeUserName: ()=>{dispatch(changeUserName())}
         editTodo: (data , index ) => {
             dispatch(editTodo(data , index))
         }
