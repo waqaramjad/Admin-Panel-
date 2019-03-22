@@ -69,7 +69,7 @@ class CreatePOst extends Component {
     isUploading: false,
     progress: 0,
     avatarURL: "" , 
-    editorHtml : '',  theme: 'snow' , check:'' , category :'' , 
+    editorHtml : '',  theme: 'snow' , check:'' , category :'No Category Selected' , 
 date1 : ''  , author  : ''  
 
         }
@@ -294,6 +294,9 @@ var reactHtml = ReactDOMServer.renderToStaticMarkup(reactElement);
 <br/>
               <ButtonToolbar>{BUTTONS.map(this.renderDropdownButton)}</ButtonToolbar>
 <br/>
+{/* <br/> */}
+           <div style={{marginBottom : '.3%'}}>
+             <h3 style={{display:'inline' , fontSize:'16px', fontWeight : 700}}>Category </h3><h5 style={{display:'inline',fontSize:'15px'}}> : {this.state.category}</h5></div>
 
 <div>
 

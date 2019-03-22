@@ -273,7 +273,11 @@ pushData(){
            </div>
 
            <ButtonToolbar>{BUTTONS.map(this.renderDropdownButton)}</ButtonToolbar>
-<br/>
+           <br/>
+           <div style={{marginBottom : '.3%'}}>
+             <h3 style={{display:'inline' , fontSize:'16px', fontWeight : 700}}>Category </h3><h5 style={{display:'inline',fontSize:'15px'}}> : {this.state.category}</h5></div>
+
+{/* <br/> */}
 
 <div>
 
