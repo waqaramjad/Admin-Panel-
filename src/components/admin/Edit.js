@@ -146,12 +146,14 @@ pushData(){
 
     var dataObject = {
         title , 
-        editorHtml , avatarURL,avatar,author
+        editorHtml , avatarURL,avatar,author , category
     }
     // console.log(this.props.location.todo.category)
     if(this.props.location.todo!=undefined){
         var UID = this.props.location.UID
         var previous = this.props.location.todo.category
+        console.log(previous)
+        console.log(category)
 
         this.props.editTodo(dataObject , UID , category , previous)
         // history.push('/Admin')

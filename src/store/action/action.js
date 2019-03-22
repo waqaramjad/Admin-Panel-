@@ -86,13 +86,17 @@ export function deleteArticle(UID, category ) {
 
 export function editTodo(todoObj, index , category , previous) {
 
-    console.log(todoObj )
+    console.log(todoObj.category )
+    var CurrentCategory = todoObj.category
     console.log(index )
     console.log(category )
+    console.log(previous )
     return dispatch => {
         // console.log(todoObj)
         // let updateKey =todoObj.id;
         // delete todoObj.id;
+
+
         firebase.database().ref('/articles/'+category+'/' + index).update(todoObj).then((data)=>{
             
            history.push({
@@ -105,8 +109,9 @@ export function editTodo(todoObj, index , category , previous) {
             
             // history.push('/Admin')
         })
-// firebase.database().ref('/articles/'+previous+'/' + index).remove()
-        // alert('Data Updated')
+if(CurrentCategory!=previous)
+firebase.database().ref('/articles/'+previous+'/' + index).remove()
+        alert('Data Updated')
     }
 }
 
