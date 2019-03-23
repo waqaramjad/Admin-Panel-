@@ -37,6 +37,7 @@ const style = {
 
     btnEdit: {
         // float: 'right',
+        // backgroundColor : 'green',
         marginTop: '-7px',
         marginLeft: '6px'
     },
@@ -53,7 +54,9 @@ const style = {
         marginRight: '20%',
 
     },
-
+    info :{
+backgroundColor : 'green'
+    },
     caregoryLabel : {
         fontSize: '18px'
     } , 
@@ -795,7 +798,7 @@ console.log(today)
                         }
                         onClick = {
                             this.showPost.bind(this, index, todos)
-                        } style={style.ViewBtn}> View < /Button> 
+                        } > View < /Button> 
                         </td>
     </tr>
    
