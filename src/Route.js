@@ -17,28 +17,16 @@ import 'react-bootstrap';
 
 import history from './History';
 
-// export const history = createBrowserHistory()
-
-// const fakeAuth = {
-//     isAuthenticated: false,
-//     authenticate(cb) {
-//       this.isAuthenticated = true
-//       setTimeout(cb, 100)
-//     },
-//     signout(cb) {
-//       this.isAuthenticated = false
-//       setTimeout(cb, 100)
-//     }
-//   }
   
 const PrivateRoute = ({ component: Component,isAuthenticated, ...rest }) => (
     <Route {...rest} render={(props) => {
-
+       var authenticateData = localStorage.getItem('myData');
+// console.log(a)
 console.log(isAuthenticated)
 console.log(props)
 
       return  (
-        isAuthenticated != undefined
+        authenticateData != undefined
         ? <Component {...props} />
         :  <Redirect to='/' />
     

@@ -41,6 +41,7 @@ export function signinAction(user) {
 
                     console.log(auth)
                     console.log(firebase.auth())
+                    localStorage.setItem('myData', auth);
                     dispatch({ type: ActionTypes.Authenticated, payload: signedinUser })
                     history.push('/Admin')
 
