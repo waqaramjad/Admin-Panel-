@@ -66,8 +66,6 @@ export function renderArticles(params) {
     return dispatch => {
 
         // if({})
-        console.log('params')
-        console.log(params)
         if(params== true){
             currentTodos=[]
         }
@@ -85,13 +83,9 @@ export function deleteArticle(UID, category ) {
 
     return dispatch => {
 
-        console.log(UID)
-        console.log(category)
         firebase.database().ref('articles/'+category+'/'+ UID).remove()
             .then((v) => {
                 alert('Data Deleted')
-                // currentTodos = currentTodos.slice(0, index).concat(currentTodos.slice(index + 1));
-                // dispatch({ type: ActionTypes.POSTS, payload: currentTodos })
             });
     }
 }
@@ -99,8 +93,6 @@ export function SignOut() {
 
     return dispatch => {
 
-        // console.log(UID)
-        // console.log(category)
         firebase
     .auth()
     .signOut().then((v) =>{
@@ -108,12 +100,6 @@ export function SignOut() {
         history.push('/')
 
     });
-        // firebase.database().ref('articles/'+category+'/'+ UID).remove()
-            // .then((v) => {
-            //     alert('Data Deleted')
-            //     // currentTodos = currentTodos.slice(0, index).concat(currentTodos.slice(index + 1));
-            //     // dispatch({ type: ActionTypes.POSTS, payload: currentTodos })
-            // });
     }
 }
 
