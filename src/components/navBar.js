@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import history from '../History';
 import { Route, Router ,Link,
   Redirect,} from 'react-router-dom';
+  import {SignOut} from '../store/action/action'
 
 class Nav extends Component {
   constructor(props) {
@@ -31,7 +32,8 @@ class Nav extends Component {
 
             </ul>
             <ul className="nav navbar-nav" style={{float:'right'}}>
-              <li className="active"><Link to='/'>Sign Out</Link></li>
+              {/* <li className="active" ><a onClick={()=>{console.log(this.props.SignOut())}}>Sign Out</a></li> */}
+              <li className="active" ><a onClick={()=>{this.props.SignOut()}}>Sign Out</a></li>
              
 
             </ul>
@@ -45,5 +47,23 @@ class Nav extends Component {
 
 
 }
-export default Nav;
+function mapStateToProp(state) {
+  return ({
+      // userName: state.root.userName
+  })
+}
+
+
+function mapDispatchToProp(dispatch) {
+  return ({
+      // changeUserName: ()=>{dispatch(changeUserName())}
+      SignOut: () => {
+          dispatch(SignOut())
+      }
+  })
+}
+
+export default connect(mapStateToProp, mapDispatchToProp)(Nav);
+
+// export default Nav;
 // export default connect(mapStateToProp, mapDispatchToProp)(student);

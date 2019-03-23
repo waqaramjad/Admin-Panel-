@@ -95,6 +95,27 @@ export function deleteArticle(UID, category ) {
             });
     }
 }
+export function SignOut() {
+
+    return dispatch => {
+
+        // console.log(UID)
+        // console.log(category)
+        firebase
+    .auth()
+    .signOut().then((v) =>{
+        localStorage.clear();
+        history.push('/')
+
+    });
+        // firebase.database().ref('articles/'+category+'/'+ UID).remove()
+            // .then((v) => {
+            //     alert('Data Deleted')
+            //     // currentTodos = currentTodos.slice(0, index).concat(currentTodos.slice(index + 1));
+            //     // dispatch({ type: ActionTypes.POSTS, payload: currentTodos })
+            // });
+    }
+}
 
 export function editTodo(todoObj, index , category , previous) {
 
