@@ -3,7 +3,8 @@ import ActionTypes from '../constant/constant';
 const INITIAL_STATE = {
     userName: 'waqar' , 
     currentUserData : {} , 
-    POSTS : []
+    POSTS : [] , 
+
 
   
 }
@@ -40,6 +41,12 @@ export default (state = INITIAL_STATE, action) => {
             return ({
                 ...state,
                 POSTS: action.payload
+            })
+        case ActionTypes.Authenticated:
+        console.log(action.payload)
+            return ({
+                ...state,
+                Authenticated: action.payload
             })
         
                 

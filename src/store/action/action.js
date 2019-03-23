@@ -26,16 +26,22 @@ export function changeUserName() {
 
 
 
+var auth = undefined; 
 export function signinAction(user) {
     return dispatch => {
 
-        
+
         console.log(firebase.auth().currentUser)
         firebase.auth().signInWithEmailAndPassword(user.email, user.password)
-            .then((signedinUser) => {
-                console.log(signedinUser.uid)
+        .then((signedinUser) => {
+            // console.log(signedinUser.uid)
+            // console.log(firebase.auth().isLoaded)
+                auth = signedinUser.uid
                 if (signedinUser.uid == 'EpUKCLwlrzeJZPNIXRXaTJ1zix53') {
 
+                    console.log(auth)
+                    console.log(firebase.auth())
+                    dispatch({ type: ActionTypes.Authenticated, payload: signedinUser })
                     history.push('/Admin')
 
                 }
@@ -46,6 +52,8 @@ export function signinAction(user) {
                 
                               alert(err.message)
                           })
+console.log(auth)
+
     }
 
 }

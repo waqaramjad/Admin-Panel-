@@ -7,6 +7,7 @@ const ActionTypes = {
     RENDERTODOS : 'RENDERTODOS' , 
     POSTS  : 'POSTS' , 
     DELETEARTICLE  : 'DELETEARTICLE' , 
+    Authenticated :'Authenticated'
 }
 
 
